@@ -104,7 +104,7 @@ public class C206_CaseStudy {
 					else if (quotationOption == 3) {
 						C206_CaseStudy.deleteQuotation(manageQuotationList);
 					}
-					
+				}
 					
 				}else if (AdminOption == 5) {
 					//Manage Appointment
