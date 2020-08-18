@@ -250,7 +250,7 @@ public class C206_CaseStudy {
 					requestquotationList.get(i).getRenovationType(), requestquotationList.get(i).getRenoStyle(), requestquotationList.get(i).getSRequest());
 	
 		}
-		return output;
+		return output; 
 	
 	}
 	public static void viewAllRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
