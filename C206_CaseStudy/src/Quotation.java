@@ -8,10 +8,10 @@ public class Quotation {
 	private String renoCategory;
 	private String description;
 	private String designerName;
-	private LocalDate startDate;
+	private String startDate;
 	private double totalAmount;
 	
-	public Quotation(int requestID, int quotationID, String renoCategory, String description, String designerName, LocalDate startDate, double totalAmount) {
+	public Quotation(int requestID, int quotationID, String renoCategory, String description, String designerName, String startDate, double totalAmount) {
 		this.requestID = requestID;
 		this.quotationID = quotationID;
 		this.renoCategory = renoCategory;
@@ -41,7 +41,7 @@ public class Quotation {
 		return designerName;
 	}
 	
-	public LocalDate getEarliestStartDate() {
+	public String getEarliestStartDate() {
 		return startDate;
 	}
 	
