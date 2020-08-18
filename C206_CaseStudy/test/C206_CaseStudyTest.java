@@ -16,6 +16,9 @@ public class C206_CaseStudyTest {
 	private ArrayList<Package> packageList;
 	private Package p1;
 	private Package p2;
+	
+    private ArrayList<Quotation> manageQuotationList;
+    private Quotation q1;
 
 	private Appointment a1;
 	private Appointment a2;
@@ -30,10 +33,12 @@ public class C206_CaseStudyTest {
 
 		
 		packageList= new ArrayList<Package>();
+		manageQuotationList = new ArrayList<Quotation>();
 		
 		p1 = new Package(1, "Package Number 1",  null, null, 100.50);
 		p2 = new Package(2, "Package Number 2",  null, null, 10.50);
 		
+		 q1 = new Quotation(1, 1, "test", "test", "test", "test", 5);
 
 		// jiawei
 		LocalDate localDate1 = LocalDate.parse("20/08/2021", date_format);
@@ -157,6 +162,9 @@ public class C206_CaseStudyTest {
 		a2 = null;
 		a3 = null;
 		appointmentList = null;
+		
+        q1 = null;
+        manageQuotationList = null;
 	}
 
 	@Test
@@ -237,5 +245,33 @@ public class C206_CaseStudyTest {
 	}
 	
 	
-
+	
+	//Alyssa
+	 @Test
+	 public void addQuotationTest() {
+    	assertNotNull("Check for valid arraylist", manageQuotationList);
+        C206_CaseStudy.addQuotation(manageQuotationList, q1);
+        assertEquals("Check if arraylist size is 1" , 1, manageQuotationList.size());
+    }
+	 
+	 @Test
+	  public void retrieveQuotationTest() {
+		String output = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1, 1, "test", "test", "test", "test", 5.00);
+	    addQuotationTest();
+	    assertEquals("checks if its retrieved properly", output, C206_CaseStudy.retreiveAllQuotation(manageQuotationList));
+	 }
+	 
+	 @Test
+	  public void viewQuotationTest() {
+		 addQuotationTest();
+	     String output = C206_CaseStudy.retreiveAllQuotation(manageQuotationList);
+	     assertEquals("Checks if view all is working properly.", output, C206_CaseStudy.retreiveAllQuotation(manageQuotationList));
+	 }
+	 
+	 @Test
+	 public void deleteQuotationTest() {
+		 addQuotationTest();
+		 C206_CaseStudy.deleteQuotation(manageQuotationList, 1);
+	     assertEquals("checks if deleted properly,", 0, manageQuotationList.size());
+	 }
 }
