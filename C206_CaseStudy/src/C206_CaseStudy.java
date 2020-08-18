@@ -168,6 +168,55 @@ public class C206_CaseStudy {
 		
 	}
 	
+	public static void removeAppointment(ArrayList<Appointment> appointmentList, Appointment a, String name) {
+		// TODO Auto-generated method stub
+		for (int i =0; i <appointmentList.size();i++) {
+			if (name.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
+				appointmentList.remove(a);
+				System.out.println("Appointment removed!");
+			}else {
+				System.out.println("Customer not Found!");
+			}
+		}
+	}
+	
+    public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
+		String output = "";
+		for (int i = 0; i < appointmentList.size(); i++) {
+
+			output += String.format("%-10s %-30s %-30s %-30s %-20s\n", appointmentList.get(i).getDateOfAppointment().toString(),
+					appointmentList.get(i).getTimeOfAppointment().toString(), 
+					appointmentList.get(i).getDesignerName(),
+					appointmentList.get(i).getAddress(),appointmentList.get(i).getCustomer());
+		}
+		return output;
+    	
+	}
+    
+    public static void viewAllAppointment(ArrayList<Appointment> appointmentList) {
+		// TODO Auto-generated method stub
+		C206_CaseStudy.setHeader("APPOINTMENT LIST");
+		String output = String.format("%-10s %-30s %-30s %-30s %-20s\n", "DATE", "TIME",
+				"DESIGNER NAME", "ADDRESS","CUSTOMER NAME");
+		 output += retrieveAllAppointment(appointmentList);	
+		System.out.println(output);
+	}
+    
+    public static boolean isAbleUpdate(ArrayList<Appointment> appointmentList, Appointment a,String name, LocalDate currentDate) {
+    	System.out.println(currentDate);
+    	for (int i =0; i <appointmentList.size();i++) {
+    		if (name.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
+    			if (currentDate != appointmentList.get(i).getDateOfAppointment() && currentDate.isBefore(appointmentList.get(i).getDateOfAppointment())) {
+    				System.out.println("Hi");
+    				return true;
+    			}
+    		}
+    	}
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
+
 //====================================================Manage Package========================================
 	
 	
@@ -341,6 +390,7 @@ public class C206_CaseStudy {
 		}
 		
 	}
+
 
 
  //---------------------------------------------------------------------------------------------------------------
