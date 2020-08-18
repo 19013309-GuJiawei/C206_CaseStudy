@@ -24,7 +24,7 @@ public class C206_CaseStudy {
 				}else if (CustomerOption == 3) {
 					//Manage Appointment
 				}else {
-					System.out.println("Invild Option!");
+					System.out.println("Invaild Option!");
 				}
 				
 			}else if (option == 3 ) {
@@ -42,7 +42,7 @@ public class C206_CaseStudy {
 				}else if (AdminOption == 5) {
 					//Manage Appointment
 				}else {
-					System.out.println("Invild Option!");
+					System.out.println("Invaild Option!");
 				}
 			}
 		}
