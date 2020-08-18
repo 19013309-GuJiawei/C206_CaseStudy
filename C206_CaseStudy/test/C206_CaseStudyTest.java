@@ -221,7 +221,7 @@ public class C206_CaseStudyTest {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Package arraylist to retrieve item", packageList);
 		
-		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		//Given an empty list, after adding 1 items, test if the size of the list is 1 - normal
 		C206_CaseStudy.addPackage(packageList, p1);
 
 		
@@ -236,6 +236,20 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that updatePackage", testOutput, allPackage);
 	}
 	
+	public void deletePackageTest() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Package arraylist to retrieve item", packageList);
+		
+		//Given an empty list, after adding 1 items, test if the size of the list is 1 - normal
+		C206_CaseStudy.addPackage(packageList, p1);
+		C206_CaseStudy.addPackage(packageList, p2);
+		
+		//Test if the package is gone when i delete it
+		
+		C206_CaseStudy.deletePackage(packageList);
+		assertEquals("Test that Package arraylist size is 1", 1, packageList.size());
+		
+	}
 	
 
 }
