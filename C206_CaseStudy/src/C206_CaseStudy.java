@@ -56,8 +56,6 @@ public class C206_CaseStudy {
 						C206_CaseStudy.addPackage(packageList, pp);
 					}else if(PackageOption == 2) {
 						
-					}else if(PackageOption == 3) {
-						
 					}
 					//Manage Package
 				}else if (AdminOption == 3) {
@@ -128,7 +126,6 @@ public class C206_CaseStudy {
 		private static void packageMenu() {
 			System.out.println("1. Add Package");
 			System.out.println("2. Remove Package");
-			System.out.println("3. Update Package");
 		}
 	
 	//jiawei
