@@ -1,15 +1,14 @@
-
-import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
+import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
 	private static final int OPTION_QUIT = 4;
-	private static final DateTimeFormatter format = DateTimeFormatter.ofPattern("d/MM/yyyy");
+	private static final DateTimeFormatter format = DateTimeFormatter.ofPattern("d/MM/yyy");
 
 	public static void main(String[] args) {
+
 
 		ArrayList<Package> packageList = new ArrayList<Package>();
 		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
@@ -26,10 +25,11 @@ public class C206_CaseStudy {
 			menu();
 			option = Helper.readInt("Enter an option > ");
 			if (option == 1) {
-				C206_CaseStudy.viewAllPackage(packageList);
 				//View all package
+				C206_CaseStudy.viewAllPackage(packageList);
 			}else if (option == 2) {
 				//Login as Customer
+				//Joshua
 				CustomerMenu();
 				int CustomerOption = Helper.readInt("Enter an option > ");
 				if (CustomerOption == 1) {
@@ -47,6 +47,7 @@ public class C206_CaseStudy {
 				AdminMenue();
 				int AdminOption = Helper.readInt("Enter an option > ");
 				if (AdminOption == 1) {
+
 					//Manage Customer
 					
 				//Jonathan	
@@ -71,6 +72,11 @@ public class C206_CaseStudy {
 					}else if(requestquotationOption == 2) {
 						C206_CaseStudy.deleteRequestQuotation(requestquotationList);
 					}
+
+					//Manage Customer
+				}else if (AdminOption == 2) {
+					//Manage Package
+				}else if (AdminOption == 3) {
 					//Manage Request for Quotation
 				}else if (AdminOption == 4) {
 					//Manage Quotation
@@ -120,9 +126,6 @@ public class C206_CaseStudy {
 		System.out.println("5. Manage Appointment");
 	}
 	
-
-
-
 	//-----------------------------------------------------Manage Appointment----------------------------------------
 	//jiawei
 		private static void appointmentMenu() {
@@ -131,6 +134,7 @@ public class C206_CaseStudy {
 			System.out.println("3. Update Appointment");
 			System.out.println("4. Delete Appointment");
 			System.out.println("5. View Appointment");
+
 
 		}
 		
@@ -143,6 +147,7 @@ public class C206_CaseStudy {
 		private static void requestquotationMenu() {
 			System.out.println("1. Add Request Quotation");
 			System.out.println("2. Remove Request Quotation");
+
 		}
 	
 	//jiawei
@@ -164,35 +169,29 @@ public class C206_CaseStudy {
 		}
 	}
 	
+//====================================================MAnage Packge========================================
+	// VIEW ALL Package
 	
-	
-	//------------------------------------------------------------------------------- MANAGE PACKAGE--------------------------------------------------------------	
-	
-		// JONATHAN
-		
-	// VIEW ALL PACKAGE
-		
 	public static String retrieveAllPackage(ArrayList<Package> packageList) {
 		String output = "";
 		for (int i = 0; i < packageList.size(); i++) {
 
-			output += String.format("%-10d %-30s %-10s %-10s %-20d \n", packageList.get(i).getCode(),
-					packageList.get(i).getDescription(), packageList.get(i).getStart_Date() , packageList.get(i).getEnd_Date() , packageList.get(i).getAmount());
-	
+			output += String.format("%-10d %-30s %-10s %-10s %-20d \n", packageList.get(i).getCode(), packageList.get(i).getDescription(), packageList.get(i).getStart_Date(),
+					packageList.get(i).getEnd_Date(), packageList.get(i).getAmount());
 		}
 		return output;
 	
 	}
 	public static void viewAllPackage(ArrayList<Package> packageList) {
 		C206_CaseStudy.setHeader("Package LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CODE", "DESCRIPTION",
-				"START DATE", "END DATE","AMOUNT");
+		String output = String.format("%-10s %-30s %-10s %-10s %-20s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "AMOUNT");
 		 output += retrieveAllPackage(packageList);	
 		System.out.println(output);
 	}
 	
 	
-// ADD PACKAGE	
+	
+	// ADD PACKAGE	
 	
 	public static Package inputPackage() {
 		int code = Helper.readInt("Enter code > ");
@@ -298,5 +297,7 @@ public class C206_CaseStudy {
 		}
 		
 	}
+
+	//---------------------------------------------------------------------------------------------------------------
 
 }

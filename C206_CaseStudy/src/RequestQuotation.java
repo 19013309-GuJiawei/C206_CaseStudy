@@ -14,7 +14,8 @@ public class RequestQuotation {
 	private String renoStyle;
 	private String SRequest;
 	
-	public RequestQuotation( String PropertyType, double AreaSize,int Contact,String email,double budget,
+
+	public RequestQuotation(String PropertyType, double AreaSize,int Contact,String email,double budget,
 			LocalDate completedate,int renovationType,String renoStyle,String SRequest){
 		this.PropertyType = PropertyType;
 		this.AreaSize = AreaSize;
