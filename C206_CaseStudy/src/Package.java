@@ -2,13 +2,13 @@ import java.time.LocalDate;
 
 public class Package {
 // Jonathan
-	private String code;
+	private int code;
 	private String description;
 	private LocalDate Start_Date;
 	private LocalDate End_Date;
 	private int amount;
 	
-	public Package(String code, String description, LocalDate Start_Date, LocalDate End_Date, int amount) {
+	public Package(int code, String description, LocalDate Start_Date, LocalDate End_Date, int amount) {
 		this.code = code;
 		this.description = description;
 		this.Start_Date = Start_Date;
@@ -16,11 +16,11 @@ public class Package {
 		this.amount = amount;
 	}
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 
