@@ -3,9 +3,10 @@
 import java.time.LocalDate;
 
 public class RequestQuotation {
+	private int RQcode;
 	private String PropertyType;
 	private double AreaSize;
-	private String Contact;
+	private int Contact;
 	private String email;
 	private double budget;
 	private LocalDate completedate;
@@ -13,9 +14,8 @@ public class RequestQuotation {
 	private String renoStyle;
 	private String SRequest;
 	
-	public RequestQuotation(String PropertyType, double AreaSize,String Contact,String email,double budget,
+	public RequestQuotation( String PropertyType, double AreaSize,int Contact,String email,double budget,
 			LocalDate completedate,int renovationType,String renoStyle,String SRequest){
-		
 		this.PropertyType = PropertyType;
 		this.AreaSize = AreaSize;
 		this.Contact = Contact;
@@ -44,11 +44,11 @@ public class RequestQuotation {
 		AreaSize = areaSize;
 	}
 
-	public String getContact() {
+	public int getContact() {
 		return Contact;
 	}
 
-	public void setContact(String contact) {
+	public void setContact(int contact) {
 		Contact = contact;
 	}
 

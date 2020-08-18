@@ -12,8 +12,10 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 
 		ArrayList<Package> packageList = new ArrayList<Package>();
+		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
 		
 		packageList.add(new Package(1, "This package is OK",  null, null, 100));
+		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, 0, "modern", "none" ));
 
 		
 		//hello people :D
@@ -58,7 +60,17 @@ public class C206_CaseStudy {
 						C206_CaseStudy.deletePackage(packageList);
 					}
 					//Manage Package
+					
+					// Daven
 				}else if (AdminOption == 3) {
+					C206_CaseStudy.requestquotationMenu();
+					int requestquotationOption = Helper.readInt("Enter an option > ");
+					if (requestquotationOption == 1) {
+						RequestQuotation rq = inputRequestQuotation();
+						C206_CaseStudy.addRequestQuotation(requestquotationList, rq);
+					}else if(requestquotationOption == 2) {
+						C206_CaseStudy.deleteRequestQuotation(requestquotationList);
+					}
 					//Manage Request for Quotation
 				}else if (AdminOption == 4) {
 					//Manage Quotation
@@ -126,6 +138,11 @@ public class C206_CaseStudy {
 		private static void packageMenu() {
 			System.out.println("1. Add Package");
 			System.out.println("2. Remove Package");
+		}
+		
+		private static void requestquotationMenu() {
+			System.out.println("1. Add Request Quotation");
+			System.out.println("2. Remove Request Quotation");
 		}
 	
 	//jiawei
@@ -212,7 +229,74 @@ public class C206_CaseStudy {
 		
 	}
 
-	//---------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------- MANAGE REQUEST QUOTATION-----------------------------------------------------
 
+	// DAVEN
+	
+	// VIEW ALL REQUEST QUOTATION
+	
+	public static String retrieveAllRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
+		String output = "";
+		for (int i = 0; i < requestquotationList.size(); i++) {
+
+			output += String.format("%-10s %-30d %-10d %-10s %-20d %-20s %-20d %-20s %-20s \n", requestquotationList.get(i).getPropertyType(), requestquotationList.get(i).getAreaSize(),
+					requestquotationList.get(i).getContact(), requestquotationList.get(i).getEmail(), requestquotationList.get(i).getBudget(),requestquotationList.get(i).getCompletedate(),
+					requestquotationList.get(i).getRenovationType(), requestquotationList.get(i).getRenoStyle(), requestquotationList.get(i).getSRequest());
+	
+		}
+		return output;
+	
+	}
+	public static void viewAllRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
+		C206_CaseStudy.setHeader("Request Quotation LIST");
+		String output = String.format("%-10s %-30s %-10s %-10s %-20s %-20s %-20s %-20s %-20s \n", "PROPERTY TYPE", "AREA SIZE",
+				"CONTACT", "EMAIL","BUDGET", "COMPLETE DATE", "RENO TYPE", "RENO STYLE", "URGET");
+		 output += retrieveAllRequestQuotation(requestquotationList);	
+		System.out.println(output);
+	}
+	
+	
+// ADD REQUEST QUOTATION	
+	
+	public static RequestQuotation inputRequestQuotation() {
+		
+		String PT = Helper.readString("Enter Property Type > ");
+		double Areasize = Helper.readDouble("Enter Areasize > ");
+		int Contact = Helper.readInt("Enter Contact> ");
+		String Email = Helper.readString("Enter Email> ");
+		double Budget = Helper.readDouble("Enter Budget> ");
+		String date = Helper.readString("Enter Complete Date");
+		LocalDate completeDate = LocalDate.parse(date, format);
+		
+		int RT = Helper.readInt("Enter Renovation Type> ");
+		String RS = Helper.readString("Enter Renovation Style");
+		String urgent = Helper.readString("Enter urget value");
+		
+
+		RequestQuotation rq= new RequestQuotation(PT, Areasize, Contact, Email, Budget, completeDate, RT, RS, urgent);
+		return rq;
+		
+	}
+	public static void addRequestQuotation(ArrayList<RequestQuotation> requestquotationList, RequestQuotation rq) {
+		
+		requestquotationList.add(rq);
+		System.out.println("Request Quotation added");
+	}
+	
+	
+	
+	
+// DELETE REQUEST QUOTATION
+	public static void deleteRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
+		int code = Helper.readInt("Enter Contact of Request Quotationto delete> ");
+		
+		for(int i = 0; i < requestquotationList.size(); i++) {
+			if(requestquotationList.get(i).getContact() == code) {
+				requestquotationList.remove(i);
+				System.out.println("Request Quotation removed!");
+			}
+		}
+		
+	}
 
 }
