@@ -17,7 +17,7 @@ public class C206_CaseStudy {
 			menu();
 			option = Helper.readInt("Enter an option > ");
 			if (option == 1) {
-				C206_CaseStudy.viewAllPackage(packageList); // jonatahn
+				C206_CaseStudy.viewAllPackage(packageList); // jonathan
 				//View all package
 			}else if (option == 2) {
 				//Login as Customer
