@@ -11,13 +11,12 @@ public class C206_CaseStudy {
 
 
 		ArrayList<Package> packageList = new ArrayList<Package>();
-
 		String start = "10/10/2020";
 		String end = "10/11/2020";
 		LocalDate startdate = LocalDate.parse(start, format);
-		LocalDate enddate = LocalDate.parse(end, format);
-		
+		LocalDate enddate = LocalDate.parse(end, format);		
 		packageList.add(new Package(1, "This package is for testing",  startdate, enddate, 100.50));
+		
 		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
 		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" ));
 
@@ -66,6 +65,8 @@ public class C206_CaseStudy {
 						C206_CaseStudy.addPackage(packageList, pp);
 					}else if(PackageOption == 2) {
 						C206_CaseStudy.deletePackage(packageList);
+					}else if(PackageOption == 3) {
+						C206_CaseStudy.updatePackage(packageList);
 					}
 					//Manage Package
 					
@@ -145,6 +146,7 @@ public class C206_CaseStudy {
 		private static void packageMenu() {
 			System.out.println("1. Add Package");
 			System.out.println("2. Remove Package");
+			System.out.println("3. Update Package");
 		}
 		
 		private static void requestquotationMenu() {
@@ -192,7 +194,7 @@ public class C206_CaseStudy {
 	}
 	public static void viewAllPackage(ArrayList<Package> packageList) {
 		C206_CaseStudy.setHeader("Package LIST");
-		String output = String.format("%-10s %-30s %-15s %-15s %-15s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "$ AMOUNT");
+		String output = String.format("%-10s %-30s %-15s %-15s $%-15s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "$ AMOUNT");
 		 output += retrieveAllPackage(packageList);	
 		System.out.println(output);
 	}
@@ -221,6 +223,34 @@ public class C206_CaseStudy {
 	}
 	
 	
+	
+	// UPDATE PACKAGE
+	
+	public static void updatePackage(ArrayList<Package> packageList) {
+		int code = Helper.readInt("Enter the package's code > ");
+		for (int i = 0; i < packageList.size(); i++) {
+			if(packageList.get(i).getCode() == code) {
+				String description = Helper.readString("Enter new description > ");
+				String start = Helper.readString("Enter new Start Date> ");
+				String end = Helper.readString("Enter new End Date> ");
+				LocalDate startdate = LocalDate.parse(start, format);
+				LocalDate enddate = LocalDate.parse(end, format);
+				double amount = Helper.readDouble("Enter new amount of package> ");
+				
+				packageList.get(i).setDescription(description); 
+				packageList.get(i).setStart_Date(startdate);
+				packageList.get(i).setEnd_Date(enddate);
+				packageList.get(i).setAmount(amount);
+				
+				System.out.println("Package updated");
+				
+			}else {
+				System.out.println("Code not found!");
+			}
+		}
+	}
+	
+
 	
 	
 // DELETE PACKAGE
@@ -305,70 +335,6 @@ public class C206_CaseStudy {
 		
 	}
 
-	//----------------------------------------MANAGE QUOTATION-----------------------------------------------------------------------------
-	
-	//Alyssa//
-	
-	//VIEW ALL QUOTATION
-	
-	public static String retreiveAllQuotation(ArrayList<Quotation> manageQuotationList) {
-		
-		String output = "";
+ //---------------------------------------------------------------------------------------------------------------
 
-		for (int i = 0; i < manageQuotationList.size(); i++) {
-			
-			output += String.format("%-10d %-30d %-10s %-10s %-20s %-20s %-20s %-20s %-20s \n", manageQuotationList.get(i).getRequestID(), manageQuotationList.get(i).getQuotationID(),
-								manageQuotationList.get(i).getRenovationCategory(), manageQuotationList.get(i).getDescription(), manageQuotationList.get(i).getDesignerName(),
-								manageQuotationList.get(i).getEarliestStartDate(),manageQuotationList.get(i).getTotalQuoteAmount());
-		}
-		
-		return output;
-	}
-	
-	public static void viewAllQuotation(ArrayList<Quotation> manageQuotationList) {
-		
-		C206_CaseStudy.setHeader("MANAGE QUOTATION LIST");
-		
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s %-20s %-20s %-20s %-20s \n", "REQUEST_ID", "QUOTATION_ID", "RENOVATION CATEGORY",
-				"DESCRIPTION", "DESIGNER NAME", "EARLIEST START DATE", "TOTAL QUOTATION AMOUNT");
-		
-		output += retreiveAllQuotation(manageQuotationList);
-		System.out.println(output);
-	}
-	
-	//ADD QUOTATION
-	public static Quotation inputQuotation() {
-		
-		int requestID = Helper.readInt("Enter ID");
-		int quotationID = Helper.readInt("Enter Quotation ID");
-		String renovationCat = Helper.readString("Enter Renovation Category");
-		String description = Helper.readString("Enter Description Of Renovation Items");
-		String name = Helper.readString("Enter Designer Name: ");
-		String startDate = Helper.readString("Enter Earliest Start Date (dd-mm-yy): ");
-		double totalAmount = Helper.readDouble("Enter Total Quotation Amount: ");
-		
-		Quotation q  = new Quotation(requestID,quotationID,renovationCat,description,name,startDate,totalAmount);
-		return q;
-	}
-	
-	public void addQuotation(ArrayList<Quotation> manageQuotationList, Quotation q) {
-		manageQuotationList.add(q);
-		System.out.println("Quotation Added");
-	}
-	
-	//DELETE QUOTATION
-	
-	public static void deleteQuotation(ArrayList<Quotation> manageQuotationList) {
-		
-		int delete = Helper.readInt("Enter Quotation ID To Delete: ");
-		
-		for (int i=0; i<manageQuotationList.size(); i++) {
-			if (manageQuotationList.get(i).getQuotationID() == delete) {
-				manageQuotationList.remove(i);
-				System.out.println("Quotation Removed!");
-			}
-		}
-	}
-//--------------------------------------------------------------------------------------------------------------------------------------//
-	
 }

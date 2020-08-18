@@ -6,9 +6,9 @@ public class Package {
 	private String description;
 	private LocalDate Start_Date;
 	private LocalDate End_Date;
-	private int amount;
+	private double amount;
 	
-	public Package(int code, String description, LocalDate Start_Date, LocalDate End_Date, int amount) {
+	public Package(int code, String description, LocalDate Start_Date, LocalDate End_Date, double amount) {
 		this.code = code;
 		this.description = description;
 		this.Start_Date = Start_Date;
@@ -48,11 +48,11 @@ public class Package {
 		End_Date = end_Date;
 	}
 
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	
