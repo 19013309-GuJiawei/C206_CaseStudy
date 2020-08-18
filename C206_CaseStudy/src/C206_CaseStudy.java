@@ -186,7 +186,7 @@ public class C206_CaseStudy {
 		String output = "";
 		for (int i = 0; i < packageList.size(); i++) {
 
-			output += String.format("%-10d %-30s %-15s %-15s %-15.2f \n", packageList.get(i).getCode(), packageList.get(i).getDescription(), packageList.get(i).getStart_Date(),
+			output += String.format("%-10d %-30s %-15s %-15s $%-15.2f \n", packageList.get(i).getCode(), packageList.get(i).getDescription(), packageList.get(i).getStart_Date(),
 					packageList.get(i).getEnd_Date(), packageList.get(i).getAmount());
 		}
 		return output;
@@ -194,7 +194,7 @@ public class C206_CaseStudy {
 	}
 	public static void viewAllPackage(ArrayList<Package> packageList) {
 		C206_CaseStudy.setHeader("Package LIST");
-		String output = String.format("%-10s %-30s %-15s %-15s $%-15s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "$ AMOUNT");
+		String output = String.format("%-10s %-30s %-15s %-15s %-15s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "$ AMOUNT");
 		 output += retrieveAllPackage(packageList);	
 		System.out.println(output);
 	}
