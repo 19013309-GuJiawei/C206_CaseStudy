@@ -142,6 +142,18 @@ public class C206_CaseStudy {
 
 		}
 		
+	// JOnathan
+		private static void packageMenu() {
+			System.out.println("1. Add Package");
+			System.out.println("2. Remove Package");
+			System.out.println("3. Update Package");
+		}
+		
+		private static void requestquotationMenu() {
+			System.out.println("1. View all Request Quotation");
+			System.out.println("2. Remove Request Quotation");
+
+		}
 	
 	//jiawei
 	private static void manageAppointment() {
@@ -161,6 +173,7 @@ public class C206_CaseStudy {
 			
 		}
 	}
+
 	public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment a) {
 		// TODO Auto-generated method stub
 		appointmentList.add(a);
@@ -222,21 +235,8 @@ public class C206_CaseStudy {
 	
 	//JONATHAN 
 	
-	// JOnathan
-			private static void packageMenu() {
-				System.out.println("1. Add Package");
-				System.out.println("2. Remove Package");
-				System.out.println("3. Update Package");
-			}
-			
-			private static void requestquotationMenu() {
-				System.out.println("1. View all Request Quotation");
-				System.out.println("2. Remove Request Quotation");
-
-			}
 	
 	// VIEW ALL Package
-	
 	
 	public static String retrieveAllPackage(ArrayList<Package> packageList) {
 		String output = "";
@@ -389,10 +389,14 @@ public class C206_CaseStudy {
 			}
 		}
 		
+
 	}
 
 
 
+	}
+
+
  //---------------------------------------------------------------------------------------------------------------
 
-}
+

@@ -16,14 +16,14 @@ public class RequestQuotation {
 	
 
 	public RequestQuotation(String PropertyType, double AreaSize,int Contact,String email,double budget,
-			LocalDate completedate,String renovationType,String renoStyle,String SRequest){
+			LocalDate completedate,String rT,String renoStyle,String SRequest){
 		this.PropertyType = PropertyType;
 		this.AreaSize = AreaSize;
 		this.Contact = Contact;
 		this.email = email;
 		this.budget = budget;
 		this.completedate = completedate;
-		this.renovationType = renovationType;
+		this.renovationType = rT;
 		this.renoStyle = renoStyle;
 		this.SRequest = SRequest;
 		

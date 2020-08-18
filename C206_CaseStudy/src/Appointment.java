@@ -3,7 +3,6 @@ import java.time.LocalTime;
 
 public class Appointment {
 	//Jiawei
-	//hi
 	private LocalDate dateOfAppointment;
 	private LocalTime timeOfAppointment;
 	private String DesignerName;
@@ -20,14 +19,17 @@ public class Appointment {
 		this.address = address;
 		Customer = customer;
 	}
+	
 
 	public String getCustomer() {
 		return Customer;
 	}
 
+
 	public void setCustomer(String customer) {
 		Customer = customer;
 	}
+
 
 	public LocalDate getDateOfAppointment() {
 		return dateOfAppointment;

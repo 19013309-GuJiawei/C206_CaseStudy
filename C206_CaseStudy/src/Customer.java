@@ -6,13 +6,15 @@ public class Customer {
 	private String email;
 	private String password;
 	private String status;
+	private String role;
 
-	public Customer(String name, int contact_Number, String email, String password, String status) {
+	public Customer(String name, String email, String password, String status, String role) {
+		super();
 		this.name = name;
-		Contact_Number = contact_Number;
 		this.email = email;
 		this.password = password;
 		this.status = status;
+		this.role = role;
 	}
 
 	public String getName() {
@@ -21,14 +23,6 @@ public class Customer {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getContact_Number() {
-		return Contact_Number;
-	}
-
-	public void setContact_Number(int contact_Number) {
-		Contact_Number = contact_Number;
 	}
 
 	public String getEmail() {
@@ -53,6 +47,14 @@ public class Customer {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }
