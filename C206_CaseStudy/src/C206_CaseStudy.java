@@ -344,7 +344,6 @@ public class C206_CaseStudy {
 	//----------------------------------------MANAGE QUOTATION-----------------------------------------------------------------------------
 	
 	//Alyssa//
-	
 	//VIEW ALL QUOTATION
 	
 	public static String retreiveAllQuotation(ArrayList<Quotation> manageQuotationList) {
