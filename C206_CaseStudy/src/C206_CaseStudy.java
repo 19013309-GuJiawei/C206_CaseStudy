@@ -29,7 +29,7 @@ public class C206_CaseStudy {
 		while (option != OPTION_QUIT) {
 			menu();
 			option = Helper.readInt("Enter an option > ");
-			if (option == 1) {
+			if (option == 1) { 
 				//View all package
 				C206_CaseStudy.viewAllPackage(packageList);
 			}else if (option == 2) {
