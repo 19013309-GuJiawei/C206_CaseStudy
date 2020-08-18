@@ -66,10 +66,13 @@ public class C206_CaseStudy {
 				}else if (AdminOption == 3) {
 					C206_CaseStudy.requestquotationMenu();
 					int requestquotationOption = Helper.readInt("Enter an option > ");
-					if (requestquotationOption == 1) {
+					
+					if(requestquotationOption == 1) {
+						C206_CaseStudy.viewAllRequestQuotation(requestquotationList);
+					}else if (requestquotationOption == 2) {
 						RequestQuotation rq = inputRequestQuotation();
 						C206_CaseStudy.addRequestQuotation(requestquotationList, rq);
-					}else if(requestquotationOption == 2) {
+					}else if(requestquotationOption == 3) {
 						C206_CaseStudy.deleteRequestQuotation(requestquotationList);
 					}
 
@@ -145,8 +148,9 @@ public class C206_CaseStudy {
 		}
 		
 		private static void requestquotationMenu() {
-			System.out.println("1. Add Request Quotation");
-			System.out.println("2. Remove Request Quotation");
+			System.out.println("1. View all Request Quotation");
+			System.out.println("2. Add Request Quotation");
+			System.out.println("3. Remove Request Quotation");
 
 		}
 	
@@ -238,7 +242,7 @@ public class C206_CaseStudy {
 		String output = "";
 		for (int i = 0; i < requestquotationList.size(); i++) {
 
-			output += String.format("%-10s %-30d %-10d %-10s %-20d %-20s %-20d %-20s %-20s \n", requestquotationList.get(i).getPropertyType(), requestquotationList.get(i).getAreaSize(),
+			output += String.format("%-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15d %-15s %-15s\n", requestquotationList.get(i).getPropertyType(), requestquotationList.get(i).getAreaSize(),
 					requestquotationList.get(i).getContact(), requestquotationList.get(i).getEmail(), requestquotationList.get(i).getBudget(),requestquotationList.get(i).getCompletedate(),
 					requestquotationList.get(i).getRenovationType(), requestquotationList.get(i).getRenoStyle(), requestquotationList.get(i).getSRequest());
 	
@@ -248,7 +252,7 @@ public class C206_CaseStudy {
 	}
 	public static void viewAllRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
 		C206_CaseStudy.setHeader("Request Quotation LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s %-20s %-20s %-20s %-20s \n", "PROPERTY TYPE", "AREA SIZE",
+		String output = String.format("%-15s %-10s %-10s %-20s %-10s %-15s %-15s %-15s %-15s \n", "PROPERTY TYPE", "AREA SIZE",
 				"CONTACT", "EMAIL","BUDGET", "COMPLETE DATE", "RENO TYPE", "RENO STYLE", "URGET");
 		 output += retrieveAllRequestQuotation(requestquotationList);	
 		System.out.println(output);

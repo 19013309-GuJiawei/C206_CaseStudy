@@ -3,7 +3,6 @@
 import java.time.LocalDate;
 
 public class RequestQuotation {
-	private int RQcode;
 	private String PropertyType;
 	private double AreaSize;
 	private int Contact;
