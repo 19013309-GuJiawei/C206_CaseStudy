@@ -1,13 +1,9 @@
-import java.util.ArrayList;
-import java.time.LocalDate;
 
 public class C206_CaseStudy {
 
 	private static final int OPTION_QUIT = 4;
 
 	public static void main(String[] args) {
-		ArrayList<Package> packageList = new ArrayList<Package>();
-		packageList.add(new Package(1, "This package is OK",  null, null, 100));
 		
 		//hello people :D
 		//jiawei
@@ -17,7 +13,6 @@ public class C206_CaseStudy {
 			menu();
 			option = Helper.readInt("Enter an option > ");
 			if (option == 1) {
-				C206_CaseStudy.viewAllPackage(packageList); // jonathan 
 				//View all package
 			}else if (option == 2) {
 				//Login as Customer
@@ -91,24 +86,35 @@ public class C206_CaseStudy {
 		System.out.println("5. Manage Appointment");
 	}
 	
-	public static String retrieveAllPackage(ArrayList<Package> packageList) {
-		String output = "";
-
-		for (int i = 0; i < packageList.size(); i++) {
-
-			output += String.format("%-10d %-30s %-10s %-10s %-20d\n", packageList.get(i).getCode(),
-					packageList.get(i).getDescription(),packageList.get(i).getStart_Date(), packageList.get(i).getEnd_Date(), packageList.get(i).getAmount());
-
+	//-----------------------------------------------------Manage Appointment----------------------------------------
+	//jiawei
+		private static void appointmentMenu() {
+			System.out.println("1. View All Designers");
+			System.out.println("2. Make Appointment");
+			System.out.println("3. Update Appointment");
+			System.out.println("4. Delete Appointment");
+			System.out.println("5. View Appointment");
 		}
-		return output;
+	
+	//jiawei
+	private static void manageAppointment() {
+		appointmentMenu();
+		int appointmentOption = Helper.readInt("Enter an option > ");
+		if (appointmentOption == 1) {
+			//View All Designers
+		}else if (appointmentOption == 2) {
+			//Make Appointment
+		}else if (appointmentOption == 3) {
+			//Update Appointment
+		}else if (appointmentOption == 4) {
+			//Delete Appointment
+		}else if (appointmentOption == 5) {
+			//View Appointment
+		}else {
+			
+		}
 	}
 	
-	public static void viewAllPackage(ArrayList<Package> packageList) {
-		C206_CaseStudy.setHeader("Package LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
-				"START DATE", "END DATE","AMOUNT");
-		 output += retrieveAllPackage(packageList);	
-		System.out.println(output);
-	}
+	//---------------------------------------------------------------------------------------------------------------
 
 }
