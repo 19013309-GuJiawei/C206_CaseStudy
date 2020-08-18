@@ -22,7 +22,7 @@ public class C206_CaseStudy {
 		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" ));
 		
 		ArrayList<Quotation> manageQuotationList = new ArrayList<Quotation>();
-		
+		ArrayList<Customer> userCustList = new ArrayList<Customer>();
 		//hello people :D
 		//jiawei
 		int option = 0;
@@ -40,6 +40,14 @@ public class C206_CaseStudy {
 				int CustomerOption = Helper.readInt("Enter an option > ");
 				if (CustomerOption == 1) {
 					//Visitor account Registration
+					int userOptions = Helper.readInt("Enter option> ");
+
+			        if (userOptions == 1) {
+			          Customer ua = inputCustomer();
+			          C206_CaseStudy.addCustomer(userCustList, ua);
+			        } else if (userOptions == 2) {
+			          C206_CaseStudy.viewCustomer(userCustList);
+			        }
 				}else if (CustomerOption == 2) {
 					RequestQuotation rq = inputRequestQuotation();
 					C206_CaseStudy.addRequestQuotation(requestquotationList, rq);
@@ -397,6 +405,40 @@ public class C206_CaseStudy {
 			}
 		}
 	}
-//--------------------------------------------------------------------------------------------------------------------------------------//
-	
+//----------------------------------------------------MANAGE CUSTOMERS----------------------------------------------------------------------------------//
+	public static Customer inputCustomer() {
+	    String uName = Helper.readString("Enter name> ");
+	    String uRole = Helper.readString("Enter role> ");
+	    String uEmail = Helper.readString("Enter email> ");
+	    String uPassword = Helper.readString("Enter password> ");
+	    String uStatus = Helper.readString("Enter status> ");
+
+	    Customer uCust = new Customer(uName, uRole, uEmail, uPassword, uStatus);
+	    return uCust;
+	  }
+
+	  public static void addCustomer(ArrayList<Customer> userCustList, Customer uCust) {
+
+	    userCustList.add(uCust);
+	    System.out.println("User Account added!");
+	  }
+
+	  //VIEW ALL USERS
+	  public static String retrieveAllCustomer(ArrayList<Customer> userCustList) {
+	    String output = "";
+
+	    for (int i = 0; i < userCustList.size(); i++) {
+	      output += String.format("%-10s %-20s %-10s %-10s %-20s\n", userCustList.get(i).getName(),
+	          userCustList.get(i).getRole(), userCustList.get(i).getEmail(), userCustList.get(i).getPassword(),
+	          userCustList.get(i).getStatus());
+	    }
+	    return output;
+	  }
+
+	  public static void viewCustomer(ArrayList<Customer> userCustList) {
+	    C206_CaseStudy.setHeader("Customer");
+	    String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
+	    output += retrieveAllCustomer(userCustList);
+	    System.out.println(output);
+	  }
 }
