@@ -194,7 +194,7 @@ public class C206_CaseStudy {
 	}
 	public static void viewAllPackage(ArrayList<Package> packageList) {
 		C206_CaseStudy.setHeader("Package LIST");
-		String output = String.format("%-10s %-30s %-15s %-15s %-15s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "$ AMOUNT");
+		String output = String.format("%-10s %-30s %-15s %-15s %-15s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "AMOUNT");
 		 output += retrieveAllPackage(packageList);	
 		System.out.println(output);
 	}
