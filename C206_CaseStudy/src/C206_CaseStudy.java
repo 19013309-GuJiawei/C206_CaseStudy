@@ -11,12 +11,13 @@ public class C206_CaseStudy {
 		//jiawei
 		while (option != OPTION_QUIT) {
 			menu();
+			option = Helper.readInt("Enter an option > ");
 			if (option == 1) {
 				//View all package
 			}else if (option == 2) {
 				//Login as Customer
 				CustomerMenu();
-				int CustomerOption = 0;
+				int CustomerOption = Helper.readInt("Enter an option > ");
 				if (CustomerOption == 1) {
 					//Visitor account Registration
 				}else if (CustomerOption == 2) {
@@ -30,7 +31,7 @@ public class C206_CaseStudy {
 			}else if (option == 3 ) {
 				//Login as Admin
 				AdminMenue();
-				int AdminOption = 0;
+				int AdminOption = Helper.readInt("Enter an option > ");
 				if (AdminOption == 1) {
 					//Manage Customer
 				}else if (AdminOption == 2) {
