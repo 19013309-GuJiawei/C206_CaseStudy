@@ -18,6 +18,7 @@ public class C206_CaseStudyTest {
 	private Package p1;
 	private Package p2;
 	
+	//Alyssa
     private ArrayList<Quotation> manageQuotationList;
     private Quotation q1;
     
@@ -38,7 +39,9 @@ public class C206_CaseStudyTest {
 		
 		packageList= new ArrayList<Package>();
 		
+		//Alyssa
 		manageQuotationList = new ArrayList<Quotation>();
+		
 		requestquotationList = new ArrayList<RequestQuotation>();
 		
 		p1 = new Package(1, "Package Number 1",  null, null, 100.50);
@@ -172,6 +175,7 @@ public class C206_CaseStudyTest {
 		a3 = null;
 		appointmentList = null;
 		
+		//Alyssa
         q1 = null;
         manageQuotationList = null;
 	}
@@ -339,6 +343,7 @@ public class C206_CaseStudyTest {
         assertEquals("Check if arraylist size is 1" , 1, manageQuotationList.size());
     }
 	 
+	 //Alyssa
 	 @Test
 	  public void retrieveQuotationTest() {
 		String output = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1, 1, "test", "test", "test", "test", 5.00);
@@ -346,6 +351,7 @@ public class C206_CaseStudyTest {
 	    assertEquals("checks if its retrieved properly", output, C206_CaseStudy.retreiveAllQuotation(manageQuotationList));
 	 }
 	 
+	 //Alyssa
 	 @Test
 	  public void viewQuotationTest() {
 		 addQuotationTest();
@@ -353,6 +359,7 @@ public class C206_CaseStudyTest {
 	     assertEquals("Checks if view all is working properly.", output, C206_CaseStudy.retreiveAllQuotation(manageQuotationList));
 	 }
 	 
+	 //Alyssa
 	 @Test
 	 public void deleteQuotationTest() {
 		 addQuotationTest();
