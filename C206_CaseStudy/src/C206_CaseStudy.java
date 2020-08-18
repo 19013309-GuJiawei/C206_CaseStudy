@@ -24,7 +24,7 @@ public class C206_CaseStudy {
 			menu();
 			option = Helper.readInt("Enter an option > ");
 			if (option == 1) {
-				C206_CaseStudy.retrieveAllPackage(packageList);
+				C206_CaseStudy.viewAllPackage(packageList);
 				//View all package
 			}else if (option == 2) {
 				//Login as Customer
@@ -46,8 +46,19 @@ public class C206_CaseStudy {
 				int AdminOption = Helper.readInt("Enter an option > ");
 				if (AdminOption == 1) {
 					//Manage Customer
+					
+				//Jonathan	
 				}else if (AdminOption == 2) {
-					C206_CaseStudy.inputPackage();
+					C206_CaseStudy.packageMenu();
+					int PackageOption = Helper.readInt("Enter an option > ");
+					if (PackageOption == 1) {
+						Package pp = inputPackage();
+						C206_CaseStudy.addPackage(packageList, pp);
+					}else if(PackageOption == 2) {
+						
+					}else if(PackageOption == 3) {
+						
+					}
 					//Manage Package
 				}else if (AdminOption == 3) {
 					//Manage Request for Quotation
@@ -112,6 +123,13 @@ public class C206_CaseStudy {
 			System.out.println("5. View Appointment");
 
 		}
+		
+	// JOnathan
+		private static void packageMenu() {
+			System.out.println("1. Add Package");
+			System.out.println("2. Remove Package");
+			System.out.println("3. Update Package");
+		}
 	
 	//jiawei
 	private static void manageAppointment() {
@@ -142,11 +160,10 @@ public class C206_CaseStudy {
 		
 	public static String retrieveAllPackage(ArrayList<Package> packageList) {
 		String output = "";
-
 		for (int i = 0; i < packageList.size(); i++) {
 
-			output += String.format("%-10d %-30s %-10s %-10s %-20d\n", packageList.get(i).getCode(),
-					packageList.get(i).getDescription(),packageList.get(i).getStart_Date(), packageList.get(i).getEnd_Date(), packageList.get(i).getAmount());
+			output += String.format("%-10d %-30s %-10s %-10s %-20d \n", packageList.get(i).getCode(),
+					packageList.get(i).getDescription(), packageList.get(i).getStart_Date() , packageList.get(i).getEnd_Date() , packageList.get(i).getAmount());
 	
 		}
 		return output;
@@ -154,7 +171,7 @@ public class C206_CaseStudy {
 	}
 	public static void viewAllPackage(ArrayList<Package> packageList) {
 		C206_CaseStudy.setHeader("Package LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
+		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CODE", "DESCRIPTION",
 				"START DATE", "END DATE","AMOUNT");
 		 output += retrieveAllPackage(packageList);	
 		System.out.println(output);
@@ -166,14 +183,13 @@ public class C206_CaseStudy {
 	public static Package inputPackage() {
 		int code = Helper.readInt("Enter code > ");
 		String description = Helper.readString("Enter description > ");
-		int zoom = Helper.readInt("Enter optical zoom > ");
 		String start = Helper.readString("Enter Start Date ");
 		String end = Helper.readString("Enter End Date ");
 		LocalDate startdate = LocalDate.parse(start, format);
 		LocalDate enddate = LocalDate.parse(end, format);
 		int amount = Helper.readInt("Enter amount of package");
 
-		Package pp= new Package(code, description, startdate, enddate, amount);
+		Package pp = new Package(code, description, startdate, enddate, amount);
 		return pp;
 		
 	}
