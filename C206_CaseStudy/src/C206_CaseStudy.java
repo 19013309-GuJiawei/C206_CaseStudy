@@ -96,7 +96,15 @@ public class C206_CaseStudy {
                     }
                    
                     else if (quotationOption == 2) {
-                        C206_CaseStudy.addQuotation(manageQuotationList, inputQuotation());
+                        int requestID = Helper.readInt("Enter ID: ");
+                        int quotationID = Helper.readInt("Enter Quotation ID: ");
+                        String renovationCat = Helper.readString("Enter Renovation Category: ");
+                        String description = Helper.readString("Enter Description Of Renovation Items: ");
+                        String name = Helper.readString("Enter Designer Name: ");
+                        String startDate = Helper.readString("Enter Start Date: ");
+                        double totalAmount = Helper.readDouble("Enter Total Quotation Amount: ");
+                        
+                        C206_CaseStudy.addQuotation(manageQuotationList, createQuotation(requestID,quotationID, renovationCat, description, name, startDate, totalAmount));
                     }
                    
                     else if (quotationOption == 3) {
@@ -449,18 +457,10 @@ public static void viewAllQuotation(ArrayList<Quotation> manageQuotationList) {
 }
 
 //ADD QUOTATION
-public static Quotation inputQuotation() {
-	
-	int requestID = Helper.readInt("Enter ID: ");
-	int quotationID = Helper.readInt("Enter Quotation ID: ");
-	String renovationCat = Helper.readString("Enter Renovation Category: ");
-	String description = Helper.readString("Enter Description Of Renovation Items: ");
-	String name = Helper.readString("Enter Designer Name: ");
-	String startDate = Helper.readString("Enter Start Date: ");
-	double totalAmount = Helper.readDouble("Enter Total Quotation Amount: ");
-	
-	Quotation q  = new Quotation(requestID,quotationID,renovationCat,description,name,startDate,totalAmount);
-	return q;
+public static Quotation createQuotation(int requestID, int quotationID, String renovationCat, String desc, String name, String startDate, double totalAmt) {
+    
+    Quotation q  = new Quotation(requestID,quotationID,renovationCat,desc,name,startDate,totalAmt);
+    return q;
 }
 
 public static void addQuotation(ArrayList<Quotation> manageQuotationList, Quotation q) {
