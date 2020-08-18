@@ -7,13 +7,29 @@ public class Appointment {
 	private LocalTime timeOfAppointment;
 	private String DesignerName;
 	private String address;
+	private String Customer;
 	
-	public Appointment(LocalDate dateOfAppointment, LocalTime timeOfAppointment, String designerName, String address) {
+	
+
+	public Appointment(LocalDate dateOfAppointment, LocalTime timeOfAppointment, String designerName, String address,
+			String customer) {
 		this.dateOfAppointment = dateOfAppointment;
 		this.timeOfAppointment = timeOfAppointment;
 		DesignerName = designerName;
 		this.address = address;
+		Customer = customer;
 	}
+	
+
+	public String getCustomer() {
+		return Customer;
+	}
+
+
+	public void setCustomer(String customer) {
+		Customer = customer;
+	}
+
 
 	public LocalDate getDateOfAppointment() {
 		return dateOfAppointment;
