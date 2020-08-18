@@ -11,9 +11,14 @@ public class C206_CaseStudy {
 
 
 		ArrayList<Package> packageList = new ArrayList<Package>();
-		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
+
+		String start = "10/10/2020";
+		String end = "10/11/2020";
+		LocalDate startdate = LocalDate.parse(start, format);
+		LocalDate enddate = LocalDate.parse(end, format);
 		
-		packageList.add(new Package(1, "This package is OK",  null, null, 100));
+		packageList.add(new Package(1, "This package is for testing",  startdate, enddate, 100.50));
+		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
 		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" ));
 
 		
@@ -183,7 +188,7 @@ public class C206_CaseStudy {
 		String output = "";
 		for (int i = 0; i < packageList.size(); i++) {
 
-			output += String.format("%-10d %-30s %-10s %-10s %-20d \n", packageList.get(i).getCode(), packageList.get(i).getDescription(), packageList.get(i).getStart_Date(),
+			output += String.format("%-10d %-30s %-15s %-15s %-15.2f \n", packageList.get(i).getCode(), packageList.get(i).getDescription(), packageList.get(i).getStart_Date(),
 					packageList.get(i).getEnd_Date(), packageList.get(i).getAmount());
 		}
 		return output;
@@ -191,7 +196,7 @@ public class C206_CaseStudy {
 	}
 	public static void viewAllPackage(ArrayList<Package> packageList) {
 		C206_CaseStudy.setHeader("Package LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "AMOUNT");
+		String output = String.format("%-10s %-30s %-15s %-15s %-15s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "$ AMOUNT");
 		 output += retrieveAllPackage(packageList);	
 		System.out.println(output);
 	}
@@ -207,7 +212,7 @@ public class C206_CaseStudy {
 		String end = Helper.readString("Enter End Date> ");
 		LocalDate startdate = LocalDate.parse(start, format);
 		LocalDate enddate = LocalDate.parse(end, format);
-		int amount = Helper.readInt("Enter amount of package> ");
+		double amount = Helper.readDouble("Enter amount of package> ");
 
 		Package pp = new Package(code, description, startdate, enddate, amount);
 		return pp;
