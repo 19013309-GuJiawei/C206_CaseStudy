@@ -19,8 +19,9 @@ public class C206_CaseStudy {
 		
 		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
 		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" ));
+	    
+		ArrayList<Quotation> manageQuotationList = new ArrayList<Quotation>();
 
-		
 		//hello people :D
 		//jiawei
 		int option = 0;
@@ -83,7 +84,24 @@ public class C206_CaseStudy {
 
 					//Manage Customer
 				}else if (AdminOption == 4) {
-					//Manage Quotation
+					
+	                  //Alyssa
+                    //Manage Quotation
+                    C206_CaseStudy.ManageQuotationMenu();
+                   
+                    int quotationOption = Helper.readInt("Enter an option > ");
+                   
+                    if (quotationOption == 1) {
+                        C206_CaseStudy.viewAllQuotation(manageQuotationList);
+                    }
+                   
+                    else if (quotationOption == 2) {
+                        C206_CaseStudy.addQuotation(manageQuotationList, inputQuotation());
+                    }
+                   
+                    else if (quotationOption == 3) {
+                        C206_CaseStudy.deleteQuotation(manageQuotationList);
+                    }
 				}else if (AdminOption == 5) {
 					//Manage Appointment
 				}else {
@@ -155,6 +173,15 @@ public class C206_CaseStudy {
 
 		}
 	
+		//Alyssa
+		public static void ManageQuotationMenu() {
+			
+			System.out.println("1. View All ID");
+			System.out.println("2. Add Quotation");
+			System.out.println("3. Delete Quotation");
+		}
+		
+		
 	//jiawei
 	private static void manageAppointment() {
 		appointmentMenu();
@@ -392,9 +419,69 @@ public class C206_CaseStudy {
 
 	}
 
+//Alyssa
 
+//VIEW ALL QUOTATION
 
+public static String retreiveAllQuotation(ArrayList<Quotation> manageQuotationList) {
+	
+	String output = "";
+
+	for (int i = 0; i < manageQuotationList.size(); i++) {
+		
+		output += String.format("%-10d %-30d %-10s %-10s %-20s %-20s %-20s %-20s %-20s \n", manageQuotationList.get(i).getRequestID(), manageQuotationList.get(i).getQuotationID(),
+							manageQuotationList.get(i).getRenovationCategory(), manageQuotationList.get(i).getDescription(), manageQuotationList.get(i).getDesignerName(),
+							manageQuotationList.get(i).getEarliestStartDate(),manageQuotationList.get(i).getTotalQuoteAmount());
 	}
+	
+	return output;
+}
+
+public static void viewAllQuotation(ArrayList<Quotation> manageQuotationList) {
+	
+	C206_CaseStudy.setHeader("MANAGE QUOTATION LIST");
+	
+	String output = String.format("%-10s %-30s %-10s %-10s %-20s %-20s %-20s %-20s %-20s \n", "REQUEST_ID", "QUOTATION_ID", "RENOVATION CATEGORY",
+			"DESCRIPTION", "DESIGNER NAME", "EARLIEST START DATE", "TOTAL QUOTATION AMOUNT");
+	
+	output += retreiveAllQuotation(manageQuotationList);
+	System.out.println(output);
+}
+
+//ADD QUOTATION
+public static Quotation inputQuotation() {
+	
+	int requestID = Helper.readInt("Enter ID");
+	int quotationID = Helper.readInt("Enter Quotation ID");
+	String renovationCat = Helper.readString("Enter Renovation Category");
+	String description = Helper.readString("Enter Description Of Renovation Items");
+	String name = Helper.readString("Enter Designer Name: ");
+	String startDate = Helper.readString("Enter Start Date: ");
+	double totalAmount = Helper.readDouble("Enter Total Quotation Amount: ");
+	
+	Quotation q  = new Quotation(requestID,quotationID,renovationCat,description,name,startDate,totalAmount);
+	return q;
+}
+
+public static void addQuotation(ArrayList<Quotation> manageQuotationList, Quotation q) {
+	manageQuotationList.add(q);
+	System.out.println("Quotation Added");
+}
+
+//DELETE QUOTATION
+
+public static void deleteQuotation(ArrayList<Quotation> manageQuotationList) {
+	
+	int delete = Helper.readInt("Enter Quotation ID To Delete: ");
+	
+	for (int i=0; i<manageQuotationList.size(); i++) {
+		if (manageQuotationList.get(i).getQuotationID() == delete) {
+			manageQuotationList.remove(i);
+			System.out.println("Quotation Removed!");
+		}
+	}
+}
+}
 
 
  //---------------------------------------------------------------------------------------------------------------
