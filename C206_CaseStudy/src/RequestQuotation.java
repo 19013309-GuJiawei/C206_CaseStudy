@@ -9,13 +9,13 @@ public class RequestQuotation {
 	private String email;
 	private double budget;
 	private LocalDate completedate;
-	private int renovationType;
+	private String renovationType;
 	private String renoStyle;
 	private String SRequest;
 	
 
 	public RequestQuotation(String PropertyType, double AreaSize,int Contact,String email,double budget,
-			LocalDate completedate,int renovationType,String renoStyle,String SRequest){
+			LocalDate completedate,String renovationType,String renoStyle,String SRequest){
 		this.PropertyType = PropertyType;
 		this.AreaSize = AreaSize;
 		this.Contact = Contact;
@@ -76,11 +76,11 @@ public class RequestQuotation {
 		this.completedate = completedate;
 	}
 
-	public int getRenovationType() {
+	public String getRenovationType() {
 		return renovationType;
 	}
 
-	public void setRenovationType(int renovationType) {
+	public void setRenovationType(String renovationType) {
 		this.renovationType = renovationType;
 	}
 

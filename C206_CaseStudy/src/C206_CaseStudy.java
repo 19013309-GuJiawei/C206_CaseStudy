@@ -14,7 +14,7 @@ public class C206_CaseStudy {
 		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
 		
 		packageList.add(new Package(1, "This package is OK",  null, null, 100));
-		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, 0, "modern", "none" ));
+		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" ));
 
 		
 		//hello people :D
@@ -242,7 +242,7 @@ public class C206_CaseStudy {
 		String output = "";
 		for (int i = 0; i < requestquotationList.size(); i++) {
 
-			output += String.format("%-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15d %-15s %-15s\n", requestquotationList.get(i).getPropertyType(), requestquotationList.get(i).getAreaSize(),
+			output += String.format("%-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15s %-15s %-15s\n", requestquotationList.get(i).getPropertyType(), requestquotationList.get(i).getAreaSize(),
 					requestquotationList.get(i).getContact(), requestquotationList.get(i).getEmail(), requestquotationList.get(i).getBudget(),requestquotationList.get(i).getCompletedate(),
 					requestquotationList.get(i).getRenovationType(), requestquotationList.get(i).getRenoStyle(), requestquotationList.get(i).getSRequest());
 	
@@ -270,10 +270,9 @@ public class C206_CaseStudy {
 		double Budget = Helper.readDouble("Enter Budget> ");
 		String date = Helper.readString("Enter Complete Date");
 		LocalDate completeDate = LocalDate.parse(date, format);
-		
-		int RT = Helper.readInt("Enter Renovation Type> ");
-		String RS = Helper.readString("Enter Renovation Style");
-		String urgent = Helper.readString("Enter urget value");
+		String RT = Helper.readString("Enter Renovation Type > ");
+		String RS = Helper.readString("Enter Renovation Style > ");
+		String urgent = Helper.readString("Is it urgent > ");
 		
 
 		RequestQuotation rq= new RequestQuotation(PT, Areasize, Contact, Email, Budget, completeDate, RT, RS, urgent);
