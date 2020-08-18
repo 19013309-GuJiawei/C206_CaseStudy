@@ -85,7 +85,24 @@ public class C206_CaseStudy {
 					
 					
 				}else if (AdminOption == 4) {
-					//testtesttest
+					
+					//Alyssa
+					//Manage Quotation
+					C206_CaseStudy.ManageQuotationMenu();
+					
+					int quotationOption = Helper.readInt("Enter an option > ");
+					
+					if (quotationOption == 1) {
+						C206_CaseStudy.viewAllQuotation(manageQuotationList);
+					}
+					
+					else if (quotationOption == 2) {
+						C206_CaseStudy.addQuotation(manageQuotationList, inputQuotation());
+					}
+					
+					else if (quotationOption == 3) {
+						C206_CaseStudy.deleteQuotation(manageQuotationList);
+					}
 					
 				}else if (AdminOption == 5) {
 					//Manage Appointment
