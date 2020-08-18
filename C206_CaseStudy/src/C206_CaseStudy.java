@@ -11,7 +11,34 @@ public class C206_CaseStudy {
 		//jiawei
 		while (option != OPTION_QUIT) {
 			menu();
-			
+			if (option == 1) {
+				
+			}else if (option == 2) {
+				CustomerMenu();
+				int CustomerOption = 0;
+				if (CustomerOption == 1) {
+					
+				}else if (CustomerOption == 2) {
+					
+				}
+				
+			}else if (option == 3 ) {
+				AdminMenue();
+				int AdminOption = 0;
+				if (AdminOption == 1) {
+					
+				}else if (AdminOption == 2) {
+					
+				}else if (AdminOption == 3) {
+					
+				}else if (AdminOption == 4) {
+					
+				}else if (AdminOption == 5) {
+					
+				}else {
+					
+				}
+			}
 		}
 		
 	}
@@ -37,8 +64,8 @@ public class C206_CaseStudy {
 	//jiawei
 	private static void CustomerMenu() {
 		C206_CaseStudy.setHeader("Customer Home Page");
-		System.out.println("1. Camcorder");
-		System.out.println("2. Chromebook");
+		System.out.println("1. Request for Quotation");
+		System.out.println("2. Manage Appointment");
 	}
 	
 	//Jiawei
