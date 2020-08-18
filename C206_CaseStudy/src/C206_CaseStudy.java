@@ -108,8 +108,10 @@ public class C206_CaseStudy {
                     }
                    
                     else if (quotationOption == 3) {
-                        C206_CaseStudy.deleteQuotation(manageQuotationList);
+                        int delete = Helper.readInt("Enter Question ID To Delete: ");
+                        C206_CaseStudy.deleteQuotation(manageQuotationList, delete);
                     }
+                    
 				}else if (AdminOption == 5) {
 					//Manage Appointment
 				}else {
@@ -423,7 +425,6 @@ public class C206_CaseStudy {
 				System.out.println("Request Quotation removed!");
 			}
 		}
-		
 
 	}
 
@@ -470,9 +471,7 @@ public static void addQuotation(ArrayList<Quotation> manageQuotationList, Quotat
 
 //DELETE QUOTATION
 
-public static void deleteQuotation(ArrayList<Quotation> manageQuotationList) {
-	
-	int delete = Helper.readInt("Enter Quotation ID To Delete: ");
+public static void deleteQuotation(ArrayList<Quotation> manageQuotationList, int delete) {
 	
 	for (int i=0; i<manageQuotationList.size(); i++) {
 		if (manageQuotationList.get(i).getQuotationID() == delete) {

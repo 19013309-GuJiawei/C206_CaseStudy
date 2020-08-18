@@ -246,7 +246,7 @@ public class C206_CaseStudyTest {
 	
 	
 	
-	//Alyssa
+	//Alyssa Goh
 	 @Test
 	 public void addQuotationTest() {
     	assertNotNull("Check for valid arraylist", manageQuotationList);
