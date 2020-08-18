@@ -35,6 +35,8 @@ public class C206_CaseStudy {
 				if (CustomerOption == 1) {
 					//Visitor account Registration
 				}else if (CustomerOption == 2) {
+					RequestQuotation rq = inputRequestQuotation();
+					C206_CaseStudy.addRequestQuotation(requestquotationList, rq);
 					//Request for Quotation
 				}else if (CustomerOption == 3) {
 					//Manage Appointment
@@ -69,10 +71,7 @@ public class C206_CaseStudy {
 					
 					if(requestquotationOption == 1) {
 						C206_CaseStudy.viewAllRequestQuotation(requestquotationList);
-					}else if (requestquotationOption == 2) {
-						RequestQuotation rq = inputRequestQuotation();
-						C206_CaseStudy.addRequestQuotation(requestquotationList, rq);
-					}else if(requestquotationOption == 3) {
+					}else if(requestquotationOption == 2) {
 						C206_CaseStudy.deleteRequestQuotation(requestquotationList);
 					}
 
@@ -149,8 +148,7 @@ public class C206_CaseStudy {
 		
 		private static void requestquotationMenu() {
 			System.out.println("1. View all Request Quotation");
-			System.out.println("2. Add Request Quotation");
-			System.out.println("3. Remove Request Quotation");
+			System.out.println("2. Remove Request Quotation");
 
 		}
 	
