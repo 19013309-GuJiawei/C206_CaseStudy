@@ -1,7 +1,7 @@
 
 public class Quotation {
 	
-	//Alyssa
+	//Alyssa//
 	private int requestID;
 	private int quotationID;
 	private String renoCategory;
