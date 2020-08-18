@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 
 public class Quotation {
 	
@@ -7,10 +8,10 @@ public class Quotation {
 	private String renoCategory;
 	private String description;
 	private String designerName;
-	private String startDate;
+	private LocalDate startDate;
 	private double totalAmount;
 	
-	public Quotation(int requestID, int quotationID, String renoCategory, String description, String designerName, String startDate, double totalAmount) {
+	public Quotation(int requestID, int quotationID, String renoCategory, String description, String designerName, LocalDate startDate, double totalAmount) {
 		this.requestID = requestID;
 		this.quotationID = quotationID;
 		this.renoCategory = renoCategory;
@@ -40,7 +41,7 @@ public class Quotation {
 		return designerName;
 	}
 	
-	public String getEarliestStartDate() {
+	public LocalDate getEarliestStartDate() {
 		return startDate;
 	}
 	
