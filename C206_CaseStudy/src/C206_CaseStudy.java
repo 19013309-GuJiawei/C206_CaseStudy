@@ -11,10 +11,15 @@ public class C206_CaseStudy {
 
 
 		ArrayList<Package> packageList = new ArrayList<Package>();
-		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
+
+		String start = "10/10/2020";
+		String end = "10/11/2020";
+		LocalDate startdate = LocalDate.parse(start, format);
+		LocalDate enddate = LocalDate.parse(end, format);
 		
-		packageList.add(new Package(1, "This package is OK",  null, null, 100));
-		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, 0, "modern", "none" ));
+		packageList.add(new Package(1, "This package is for testing",  startdate, enddate, 100.50));
+		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
+		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" ));
 
 		
 		//hello people :D
@@ -24,7 +29,7 @@ public class C206_CaseStudy {
 		while (option != OPTION_QUIT) {
 			menu();
 			option = Helper.readInt("Enter an option > ");
-			if (option == 1) {
+			if (option == 1) { 
 				//View all package
 				C206_CaseStudy.viewAllPackage(packageList);
 			}else if (option == 2) {
@@ -35,6 +40,8 @@ public class C206_CaseStudy {
 				if (CustomerOption == 1) {
 					//Visitor account Registration
 				}else if (CustomerOption == 2) {
+					RequestQuotation rq = inputRequestQuotation();
+					C206_CaseStudy.addRequestQuotation(requestquotationList, rq);
 					//Request for Quotation
 				}else if (CustomerOption == 3) {
 					//Manage Appointment
@@ -66,18 +73,14 @@ public class C206_CaseStudy {
 				}else if (AdminOption == 3) {
 					C206_CaseStudy.requestquotationMenu();
 					int requestquotationOption = Helper.readInt("Enter an option > ");
-					if (requestquotationOption == 1) {
-						RequestQuotation rq = inputRequestQuotation();
-						C206_CaseStudy.addRequestQuotation(requestquotationList, rq);
+					
+					if(requestquotationOption == 1) {
+						C206_CaseStudy.viewAllRequestQuotation(requestquotationList);
 					}else if(requestquotationOption == 2) {
 						C206_CaseStudy.deleteRequestQuotation(requestquotationList);
 					}
 
 					//Manage Customer
-				}else if (AdminOption == 2) {
-					//Manage Package
-				}else if (AdminOption == 3) {
-					//Manage Request for Quotation
 				}else if (AdminOption == 4) {
 					//Manage Quotation
 				}else if (AdminOption == 5) {
@@ -145,7 +148,7 @@ public class C206_CaseStudy {
 		}
 		
 		private static void requestquotationMenu() {
-			System.out.println("1. Add Request Quotation");
+			System.out.println("1. View all Request Quotation");
 			System.out.println("2. Remove Request Quotation");
 
 		}
@@ -169,14 +172,19 @@ public class C206_CaseStudy {
 		}
 	}
 	
-//====================================================MAnage Packge========================================
+//====================================================Manage Package========================================
+	
+	
+	//JONATHAN 
+	
+	
 	// VIEW ALL Package
 	
 	public static String retrieveAllPackage(ArrayList<Package> packageList) {
 		String output = "";
 		for (int i = 0; i < packageList.size(); i++) {
 
-			output += String.format("%-10d %-30s %-10s %-10s %-20d \n", packageList.get(i).getCode(), packageList.get(i).getDescription(), packageList.get(i).getStart_Date(),
+			output += String.format("%-10d %-30s %-15s %-15s %-15.2f \n", packageList.get(i).getCode(), packageList.get(i).getDescription(), packageList.get(i).getStart_Date(),
 					packageList.get(i).getEnd_Date(), packageList.get(i).getAmount());
 		}
 		return output;
@@ -184,7 +192,7 @@ public class C206_CaseStudy {
 	}
 	public static void viewAllPackage(ArrayList<Package> packageList) {
 		C206_CaseStudy.setHeader("Package LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "AMOUNT");
+		String output = String.format("%-10s %-30s %-15s %-15s %-15s \n", "CODE", "DESCRIPTION", "START DATE", "END DATE", "$ AMOUNT");
 		 output += retrieveAllPackage(packageList);	
 		System.out.println(output);
 	}
@@ -200,7 +208,7 @@ public class C206_CaseStudy {
 		String end = Helper.readString("Enter End Date> ");
 		LocalDate startdate = LocalDate.parse(start, format);
 		LocalDate enddate = LocalDate.parse(end, format);
-		int amount = Helper.readInt("Enter amount of package> ");
+		double amount = Helper.readDouble("Enter amount of package> ");
 
 		Package pp = new Package(code, description, startdate, enddate, amount);
 		return pp;
@@ -238,17 +246,17 @@ public class C206_CaseStudy {
 		String output = "";
 		for (int i = 0; i < requestquotationList.size(); i++) {
 
-			output += String.format("%-10s %-30d %-10d %-10s %-20d %-20s %-20d %-20s %-20s \n", requestquotationList.get(i).getPropertyType(), requestquotationList.get(i).getAreaSize(),
+			output += String.format("%-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15s %-15s %-15s\n", requestquotationList.get(i).getPropertyType(), requestquotationList.get(i).getAreaSize(),
 					requestquotationList.get(i).getContact(), requestquotationList.get(i).getEmail(), requestquotationList.get(i).getBudget(),requestquotationList.get(i).getCompletedate(),
 					requestquotationList.get(i).getRenovationType(), requestquotationList.get(i).getRenoStyle(), requestquotationList.get(i).getSRequest());
 	
 		}
-		return output;
+		return output; 
 	
 	}
 	public static void viewAllRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
 		C206_CaseStudy.setHeader("Request Quotation LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s %-20s %-20s %-20s %-20s \n", "PROPERTY TYPE", "AREA SIZE",
+		String output = String.format("%-15s %-10s %-10s %-20s %-10s %-15s %-15s %-15s %-15s \n", "PROPERTY TYPE", "AREA SIZE",
 				"CONTACT", "EMAIL","BUDGET", "COMPLETE DATE", "RENO TYPE", "RENO STYLE", "URGET");
 		 output += retrieveAllRequestQuotation(requestquotationList);	
 		System.out.println(output);
@@ -266,10 +274,9 @@ public class C206_CaseStudy {
 		double Budget = Helper.readDouble("Enter Budget> ");
 		String date = Helper.readString("Enter Complete Date");
 		LocalDate completeDate = LocalDate.parse(date, format);
-		
-		int RT = Helper.readInt("Enter Renovation Type> ");
-		String RS = Helper.readString("Enter Renovation Style");
-		String urgent = Helper.readString("Enter urget value");
+		String RT = Helper.readString("Enter Renovation Type > ");
+		String RS = Helper.readString("Enter Renovation Style > ");
+		String urgent = Helper.readString("Is it urgent > ");
 		
 
 		RequestQuotation rq= new RequestQuotation(PT, Areasize, Contact, Email, Budget, completeDate, RT, RS, urgent);
@@ -300,7 +307,7 @@ public class C206_CaseStudy {
 
 	//----------------------------------------MANAGE QUOTATION-----------------------------------------------------------------------------
 	
-	//Alyssa
+	//Alyssa//
 	
 	//VIEW ALL QUOTATION
 	
