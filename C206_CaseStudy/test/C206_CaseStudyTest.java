@@ -14,8 +14,11 @@ import org.junit.Test;
 
 public class C206_CaseStudyTest {
 	private ArrayList<Package> packageList;
+	private ArrayList<RequestQuotation> requestquotationList;
 	private Package p1;
 	private Package p2;
+	private RequestQuotation rq1;
+	private RequestQuotation rq2;
 
 	private Appointment a1;
 	private Appointment a2;
@@ -30,10 +33,12 @@ public class C206_CaseStudyTest {
 
 		
 		packageList= new ArrayList<Package>();
+		requestquotationList = new ArrayList<RequestQuotation>();
 		
 		p1 = new Package(1, "Package Number 1",  null, null, 100.50);
 		p2 = new Package(2, "Package Number 2",  null, null, 10.50);
-		
+		rq1 = new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" );
+		rq2 = new RequestQuotation("HDB", 200, 888, "456@gmail.com", 200.1, null, "Living room", "old", "none" );
 
 		// jiawei
 		LocalDate localDate1 = LocalDate.parse("20/08/2021", date_format);
@@ -250,6 +255,68 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that Package arraylist size is 1", 1, packageList.size());
 		
 	}
+	
+	public void addRequestQuotation() {
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Test if there is valid Request Quotation arraylist to add to", requestquotationList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addRequestQuotation(requestquotationList, rq1);		
+		assertEquals("Test that Request Quotation arraylist size is 1", 1, requestquotationList.size());
+		assertSame("Test that Request Quotation is added", rq1, requestquotationList.get(0));
+		
+		//Add another item. test The size of the list is 2? - normal
+		//The item just added is as same as the second item of the list
+		C206_CaseStudy.addRequestQuotation(requestquotationList, rq2);
+		assertEquals("Test that Request Quotation arraylist size is 2", 2, requestquotationList.size());
+		assertSame("Test that Request Quotation is added", p2, requestquotationList.get(1));
+	}
+	
+	
+	public void retrieveAllRequestQuotationTest() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Request Quotation arraylist to retrieve item", requestquotationList);
+		
+		//test if the list of packages retrieved from the SourceCentre is empty - boundary
+		String allRequestQuotation= C206_CaseStudy.retrieveAllRequestQuotation(requestquotationList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllRequestQuotationList", testOutput, allRequestQuotation);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		C206_CaseStudy.addRequestQuotation(requestquotationList, rq1);
+		C206_CaseStudy.addRequestQuotation(requestquotationList, rq2);
+		assertEquals("Test that Request Quotation arraylist size is 2", 2, requestquotationList.size());
+		
+		//test if the expected output string same as the list of package retrieved from the SourceCentre	
+		allRequestQuotation= C206_CaseStudy.retrieveAllRequestQuotation(requestquotationList);
+		testOutput = String.format("%-15s %-10s %-10d %-20s %-10s %-15s %-15s %-15s %-15s", "HDB", "100", "999", "123@gmail.com", "100.1", "null", "Whole house", "modern", "none");
+		testOutput += String.format("%-15s %-10s %-10s %-20s %-10s %-15s %-15s %-15s %-15s","HDB", "200", "888", "456@gmail.com", "200.1", "null", "Living room", "old", "none" );
+		
+		assertEquals("Test that ViewAllRequestQuotation", testOutput, allRequestQuotation);
+		
+	}
+	
+	
+	
+	public void deleteRequestQuotationTest() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Request Quotation arraylist to retrieve item", requestquotationList);
+		
+		//Given an empty list, after adding 1 items, test if the size of the list is 1 - normal
+		C206_CaseStudy.addRequestQuotation(requestquotationList, rq1);
+		C206_CaseStudy.addRequestQuotation(requestquotationList, rq2);
+		
+		//Test if the package is gone when i delete it
+		
+		C206_CaseStudy.deleteRequestQuotation(requestquotationList);
+		assertEquals("Test that Request Quotation arraylist size is 1", 1, requestquotationList.size());
+		
+	}
+	
+	
+	
+	
 	
 
 }
