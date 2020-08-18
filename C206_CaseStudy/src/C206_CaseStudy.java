@@ -20,7 +20,8 @@ public class C206_CaseStudy {
 		packageList.add(new Package(1, "This package is for testing",  startdate, enddate, 100.50));
 		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
 		requestquotationList.add(new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" ));
-
+		
+		ArrayList<Quotation> manageQuotationList = new ArrayList<Quotation>();
 		
 		//hello people :D
 		//jiawei
@@ -81,8 +82,30 @@ public class C206_CaseStudy {
 					}
 
 					//Manage Customer
+					
+					
 				}else if (AdminOption == 4) {
+					
 					//Manage Quotation
+					//Alyssa
+					C206_CaseStudy.ManageQuotationMenu();
+					
+					int quotationOption = Helper.readInt("Enter an option > ");
+					Quotation newQuote = inputQuotation();
+					
+					if (quotationOption == 1) {
+						C206_CaseStudy.viewAllQuotation(manageQuotationList);
+					}
+					
+					else if (quotationOption == 2) {
+						C206_CaseStudy.addQuotation(manageQuotationList, newQuote);
+					}
+					
+					else if (quotationOption == 3) {
+						C206_CaseStudy.deleteQuotation(manageQuotationList);
+					}
+					
+					
 				}else if (AdminOption == 5) {
 					//Manage Appointment
 				}else {
@@ -150,9 +173,16 @@ public class C206_CaseStudy {
 		private static void requestquotationMenu() {
 			System.out.println("1. View all Request Quotation");
 			System.out.println("2. Remove Request Quotation");
-
 		}
 	
+		private static void ManageQuotationMenu() {
+			
+			System.out.println("1. View All ID");
+			System.out.println("2. Add Quotation");
+			System.out.println("3. Delete Quotation");
+		}
+
+		
 	//jiawei
 	private static void manageAppointment() {
 		appointmentMenu();
@@ -351,7 +381,7 @@ public class C206_CaseStudy {
 		return q;
 	}
 	
-	public void addQuotation(ArrayList<Quotation> manageQuotationList, Quotation q) {
+	public static void addQuotation(ArrayList<Quotation> manageQuotationList, Quotation q) {
 		manageQuotationList.add(q);
 		System.out.println("Quotation Added");
 	}
