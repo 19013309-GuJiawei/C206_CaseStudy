@@ -81,10 +81,6 @@ public class C206_CaseStudy {
 					}
 
 					//Manage Customer
-				}else if (AdminOption == 2) {
-					//Manage Package
-				}else if (AdminOption == 3) {
-					//Manage Request for Quotation
 				}else if (AdminOption == 4) {
 					//Manage Quotation
 				}else if (AdminOption == 5) {
