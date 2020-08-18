@@ -55,7 +55,7 @@ public class C206_CaseStudy {
 						Package pp = inputPackage();
 						C206_CaseStudy.addPackage(packageList, pp);
 					}else if(PackageOption == 2) {
-						
+						C206_CaseStudy.deletePackage(packageList);
 					}
 					//Manage Package
 				}else if (AdminOption == 3) {
@@ -180,11 +180,11 @@ public class C206_CaseStudy {
 	public static Package inputPackage() {
 		int code = Helper.readInt("Enter code > ");
 		String description = Helper.readString("Enter description > ");
-		String start = Helper.readString("Enter Start Date ");
-		String end = Helper.readString("Enter End Date ");
+		String start = Helper.readString("Enter Start Date> ");
+		String end = Helper.readString("Enter End Date> ");
 		LocalDate startdate = LocalDate.parse(start, format);
 		LocalDate enddate = LocalDate.parse(end, format);
-		int amount = Helper.readInt("Enter amount of package");
+		int amount = Helper.readInt("Enter amount of package> ");
 
 		Package pp = new Package(code, description, startdate, enddate, amount);
 		return pp;
@@ -194,6 +194,22 @@ public class C206_CaseStudy {
 		
 		packageList.add(pp);
 		System.out.println("Package added");
+	}
+	
+	
+	
+	
+// DELETE PACKAGE
+	public static void deletePackage(ArrayList<Package> packageList) {
+		int code = Helper.readInt("Enter code to delete> ");
+		
+		for(int i = 0; i < packageList.size(); i++) {
+			if(packageList.get(i).getCode() == code) {
+				packageList.remove(i);
+				System.out.println("Package removed!");
+			}
+		}
+		
 	}
 
 	//---------------------------------------------------------------------------------------------------------------
