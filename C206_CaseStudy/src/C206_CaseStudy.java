@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class C206_CaseStudy {
 
 	private static final int OPTION_QUIT = 4;
+	private static final DateTimeFormatter format = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
 	public static void main(String[] args) {
 		ArrayList<Package> packageList = new ArrayList<Package>();
+		
 		packageList.add(new Package(1, "This package is OK",  null, null, 100));
 		
 		//hello people :D
@@ -91,6 +94,12 @@ public class C206_CaseStudy {
 		System.out.println("5. Manage Appointment");
 	}
 	
+//------------------------------------------------------------------------------- MANAGE PACKAGE--------------------------------------------------------------	
+	
+	// JONATHAN
+	
+// VIEW ALL PACKAGE
+	
 	public static String retrieveAllPackage(ArrayList<Package> packageList) {
 		String output = "";
 
@@ -98,7 +107,6 @@ public class C206_CaseStudy {
 
 			output += String.format("%-10d %-30s %-10s %-10s %-20d\n", packageList.get(i).getCode(),
 					packageList.get(i).getDescription(),packageList.get(i).getStart_Date(), packageList.get(i).getEnd_Date(), packageList.get(i).getAmount());
-
 		}
 		return output;
 	}
@@ -109,6 +117,29 @@ public class C206_CaseStudy {
 				"START DATE", "END DATE","AMOUNT");
 		 output += retrieveAllPackage(packageList);	
 		System.out.println(output);
+	}
+	
+	
+// ADD PACKAGE	
+	
+	public static Package inputPackage() {
+		int code = Helper.readInt("Enter code > ");
+		String description = Helper.readString("Enter description > ");
+		int zoom = Helper.readInt("Enter optical zoom > ");
+		String start = Helper.readString("Enter Start Date ");
+		String end = Helper.readString("Enter End Date ");
+		LocalDate startdate = LocalDate.parse(start, format);
+		LocalDate enddate = LocalDate.parse(end, format);
+		int amount = Helper.readInt("Enter amount of package");
+
+		Package pp= new Package(code, description, startdate, enddate, amount);
+		return pp;
+		
+	}
+	public static void addPackage(ArrayList<Package> packageList, Package pp) {
+		
+		packageList.add(pp);
+		System.out.println("Package added");
 	}
 
 }
