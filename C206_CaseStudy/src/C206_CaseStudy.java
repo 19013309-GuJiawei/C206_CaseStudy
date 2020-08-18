@@ -173,6 +173,12 @@ public class C206_CaseStudy {
 			
 		}
 	}
+	public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment a) {
+		// TODO Auto-generated method stub
+		appointmentList.add(a);
+		System.out.println("Appointment added!");
+		
+	}
 	
 //====================================================Manage Package========================================
 	
@@ -334,6 +340,7 @@ public class C206_CaseStudy {
 		}
 		
 	}
+
 
  //---------------------------------------------------------------------------------------------------------------
 
