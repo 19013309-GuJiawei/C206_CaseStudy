@@ -18,6 +18,8 @@ public class C206_CaseStudyTest {
 	private Package p1;
 	private Package p2;
 	
+	private ArrayList<Customer> userCustList;
+	private Customer j1;
 	//Alyssa
     private ArrayList<Quotation> manageQuotationList;
     private Quotation q1;
@@ -41,6 +43,8 @@ public class C206_CaseStudyTest {
 		
 		//Alyssa
 		manageQuotationList = new ArrayList<Quotation>();
+		
+		userCustList = new ArrayList<Customer>();
 		
 		requestquotationList = new ArrayList<RequestQuotation>();
 		
@@ -178,6 +182,10 @@ public class C206_CaseStudyTest {
 		//Alyssa
         q1 = null;
         manageQuotationList = null;
+        
+        //Joshua
+        j1 = null;
+        userCustList = null;
 	}
 
 	@Test
@@ -365,5 +373,22 @@ public class C206_CaseStudyTest {
 		 addQuotationTest();
 		 C206_CaseStudy.deleteQuotation(manageQuotationList, 1);
 	     assertEquals("checks if deleted properly,", 0, manageQuotationList.size());
+	 }
+	 //Joshua
+	 @Test
+	 public void addCustomer() {
+		 assertNotNull("Check for valid arraylist", userCustList);
+		 C206_CaseStudy.addCustomer(userCustList, j1);
+		 assertEquals("Check if arraylist size is 1" , 1, userCustList.size());
+	 }
+	 @Test
+	  public void retrieveCustomer() {
+		addCustomer();
+	    
+	 }
+	 @Test
+	  public void viewCustomer() {
+		 addCustomer();
+
 	 }
 }
