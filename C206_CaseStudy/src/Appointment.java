@@ -3,6 +3,7 @@ import java.time.LocalTime;
 
 public class Appointment {
 	//Jiawei
+	//hi
 	private LocalDate dateOfAppointment;
 	private LocalTime timeOfAppointment;
 	private String DesignerName;

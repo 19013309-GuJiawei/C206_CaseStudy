@@ -19,6 +19,7 @@ public class C206_CaseStudyTest {
 	private static final DateTimeFormatter time_format = DateTimeFormatter.ofPattern("H:mm");
 	@Before
 	public void setUp() throws Exception {
+		//jiawei
 		LocalDate localDate1 = LocalDate.parse("20/08/2020", date_format);
 		LocalTime localtime1 = LocalTime.parse("20:00", time_format);
 		
