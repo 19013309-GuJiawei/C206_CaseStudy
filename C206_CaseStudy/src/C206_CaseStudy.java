@@ -429,7 +429,7 @@ public static String retreiveAllQuotation(ArrayList<Quotation> manageQuotationLi
 
 	for (int i = 0; i < manageQuotationList.size(); i++) {
 		
-		output += String.format("%-10d %-30d %-10s %-10s %-20s %-20s %-20s %-20s %-20s \n", manageQuotationList.get(i).getRequestID(), manageQuotationList.get(i).getQuotationID(),
+		output += String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", manageQuotationList.get(i).getRequestID(), manageQuotationList.get(i).getQuotationID(),
 							manageQuotationList.get(i).getRenovationCategory(), manageQuotationList.get(i).getDescription(), manageQuotationList.get(i).getDesignerName(),
 							manageQuotationList.get(i).getEarliestStartDate(),manageQuotationList.get(i).getTotalQuoteAmount());
 	}
@@ -441,7 +441,7 @@ public static void viewAllQuotation(ArrayList<Quotation> manageQuotationList) {
 	
 	C206_CaseStudy.setHeader("MANAGE QUOTATION LIST");
 	
-	String output = String.format("%-10s %-30s %-10s %-10s %-20s %-20s %-20s %-20s %-20s \n", "REQUEST_ID", "QUOTATION_ID", "RENOVATION CATEGORY",
+	String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s %-10s \n", "REQUEST_ID", "QUOTATION_ID", "RENOVATION CATEGORY",
 			"DESCRIPTION", "DESIGNER NAME", "EARLIEST START DATE", "TOTAL QUOTATION AMOUNT");
 	
 	output += retreiveAllQuotation(manageQuotationList);
@@ -451,10 +451,10 @@ public static void viewAllQuotation(ArrayList<Quotation> manageQuotationList) {
 //ADD QUOTATION
 public static Quotation inputQuotation() {
 	
-	int requestID = Helper.readInt("Enter ID");
-	int quotationID = Helper.readInt("Enter Quotation ID");
-	String renovationCat = Helper.readString("Enter Renovation Category");
-	String description = Helper.readString("Enter Description Of Renovation Items");
+	int requestID = Helper.readInt("Enter ID: ");
+	int quotationID = Helper.readInt("Enter Quotation ID: ");
+	String renovationCat = Helper.readString("Enter Renovation Category: ");
+	String description = Helper.readString("Enter Description Of Renovation Items: ");
 	String name = Helper.readString("Enter Designer Name: ");
 	String startDate = Helper.readString("Enter Start Date: ");
 	double totalAmount = Helper.readDouble("Enter Total Quotation Amount: ");
