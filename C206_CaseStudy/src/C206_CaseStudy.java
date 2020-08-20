@@ -14,7 +14,7 @@ public class C206_CaseStudy {
 	private static ArrayList<Designer> designerList = new ArrayList<Designer>();
 
 	public static void main(String[] args) {
-		
+
 		// jiawei
 		LocalDate localDate1 = LocalDate.parse("20/08/2021", date_format);
 		LocalTime localtime1 = LocalTime.parse("20:00", time_format);
@@ -26,10 +26,10 @@ public class C206_CaseStudy {
 		designerList.add(new Designer("Tim"));
 		designerList.add(new Designer("Tom"));
 		designerList.add(new Designer("Jason"));
-		
-		
-		
-		
+
+
+
+
 		ArrayList<Package> packageList = new ArrayList<Package>();
 		String start = "10/10/2020";
 		String end = "10/11/2020";
@@ -606,8 +606,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ----------------------------------------MANAGE
-	// CUSTOMER-----------------------------------------------------------------------
+	// ----------------------------------------MANAGE CUSTOMER-----------------------------------------------------------------------
+	//Joshua
 	public static Customer inputCustomer() {
 		String uName = Helper.readString("Enter name> ");
 		String uRole = Helper.readString("Enter role> ");
@@ -640,5 +640,16 @@ public class C206_CaseStudy {
 		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
 		output += retrieveAllCustomer(userCustList);
 		System.out.println(output);
+	}
+	public static void deleteCustomer(ArrayList<Customer> userCustList) {
+
+		String delete = Helper.readString("Please enter username to delete> ");
+
+		for (int i = 0; i < userCustList.size(); i++) {
+			if (userCustList.get(i).getName() == delete) {
+				userCustList.remove(i);
+				System.out.println("User Account deleted");
+			}
+		}
 	}
 }
