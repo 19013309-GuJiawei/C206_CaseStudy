@@ -2,19 +2,19 @@
 public class Customer {
 	//Joshua
 	private String name;
-	private  int Contact_Number;
 	private String email;
 	private String password;
 	private String status;
 	private String role;
 
-	public Customer(String name, String email, String password, String status, String role) {
+	public Customer(String name, String role, String password, String email, String status) {
 		super();
 		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.status = status;
 		this.role = role;
+		this.password = password;
+		this.email = email;
+		this.status = status;
+		
 	}
 
 	public String getName() {
@@ -23,6 +23,22 @@ public class Customer {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getEmail() {
@@ -33,13 +49,6 @@ public class Customer {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public String getStatus() {
 		return status;
@@ -49,12 +58,4 @@ public class Customer {
 		this.status = status;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
 }
