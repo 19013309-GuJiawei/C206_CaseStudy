@@ -532,6 +532,16 @@ public class C206_CaseStudy {
 		output += retrieveAllCustomer(userCustList);
 		System.out.println(output);
 	}
+	public static void deleteCustomer(ArrayList<Customer> userCustList) {
+		String delete = Helper.readString("Please enter username to delete> ");
+
+		for (int i = 0; i < userCustList.size(); i++) {
+			if (userCustList.get(i).getName() == delete) {
+				userCustList.remove(i);
+				System.out.println("User Account deleted");
+			}
+		}
+	}
 }
 
 
