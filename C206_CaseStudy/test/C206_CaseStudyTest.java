@@ -17,7 +17,8 @@ public class C206_CaseStudyTest {
 	private ArrayList<RequestQuotation> requestquotationList;
 	private Package p1;
 	private Package p2;
-
+	
+	//Joshua
 	private ArrayList<Customer> userCustList;
 	private Customer j1;
 	//Alyssa
@@ -387,6 +388,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addCustomer(userCustList, j1);
 		assertEquals("Check if arraylist size is 1" , 1, userCustList.size());
 	}
+	//Joshua
 	@Test
 	public void retrieveCustomer() {
 		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
@@ -394,12 +396,14 @@ public class C206_CaseStudyTest {
 		assertEquals("checks if its retrieved properly", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
 
 	}
+	//Joshua
 	@Test
 	public void viewCustomer() {
 		addCustomer();
 		String output = C206_CaseStudy.retrieveAllCustomer(userCustList);
 		assertEquals("Checks if view all is working properly.", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
 	}
+	//Joshua
 	@Test
 	public void deleteCustomer() {
 		addCustomer();
