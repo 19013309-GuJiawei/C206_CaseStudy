@@ -18,6 +18,7 @@ public class C206_CaseStudyTest {
 	private Package p1;
 	private Package p2;
 
+	//Joshua
 	private ArrayList<Customer> userCustList;
 	private Customer j1;
 	//Alyssa
@@ -27,6 +28,7 @@ public class C206_CaseStudyTest {
 	private RequestQuotation rq1;
 	private RequestQuotation rq2;
 
+	//Jiawei
 	private Appointment a1;
 	private Appointment a2;
 	private Appointment a3;
@@ -52,7 +54,7 @@ public class C206_CaseStudyTest {
 		p2 = new Package(2, "Package Number 2",  null, null, 10.50);
 
 		q1 = new Quotation(1, 1, "test", "test", "test", "test", 5);
-		
+
 		j1 = new Customer("NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
 
 		rq1 = new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" );
@@ -61,24 +63,24 @@ public class C206_CaseStudyTest {
 		// jiawei
 		LocalDate localDate1 = LocalDate.parse("20/08/2021", date_format);
 		LocalTime localtime1 = LocalTime.parse("20:00", time_format);
-
+		//Jiawei
 		LocalDate localDate2 = LocalDate.parse("24/08/2021", date_format);
 		LocalTime localtime2 = LocalTime.parse("15:00", time_format);
-
+		//Jiawei
 		LocalDate localDate3 = LocalDate.parse("24/08/2019", date_format);
 		LocalTime localtime3 = LocalTime.parse("15:00", time_format);
-
+		//Jiawei
 		LocalTime localtime4 = LocalTime.parse("15:00", time_format);
-
+		//Jiawei
 		a1 = new Appointment(localDate1, localtime1, "Tim", "Address1", "Customer1");
 		a2 = new Appointment(localDate2, localtime2, "Tom", "Address2", "Customer2");
 		a3 = new Appointment(localDate3, localtime3, "Jason", "Address3", "Customer3");
 		a4 = new Appointment(LocalDate.now(), localtime4, "Andrew", "Address4", "Customer4");
-
+		//Jiawei
 		appointmentList = new ArrayList<Appointment>();
 
 	}
-
+	//Jiawei
 	@Test
 	public void addAppointmentTest() {
 		// appointment list is not null, so that can add a new appointment
@@ -95,7 +97,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addAppointment(appointmentList, a2);
 		assertEquals("Test Appointment arraylist size is 2?", 2, appointmentList.size());
 	}
-
+	//Jiawei
 	@Test
 	public void removeAppointmentTest() {
 		// Add an appointment into the list and remove it, the size of the list should be 0
@@ -115,6 +117,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test Appointment arraylist size is 1?", 1, appointmentList.size());
 
 	}
+	//Jiawei
 	@Test
 	public void viewAppointmentTest() {
 		// Test the appointment list is null if we have not added anything 
@@ -141,6 +144,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that ViewAllAppointment", testOutput, allAppointment);
 
 	}
+	//Jiawei
 	@Test
 	public void UpdateAppointmentTest() {
 		// Item list is not null, so that can update an appointment
@@ -176,6 +180,7 @@ public class C206_CaseStudyTest {
 
 	@After
 	public void tearDown() throws Exception {
+		//Jiawei
 		a1 = null;
 		a2 = null;
 		a3 = null;
@@ -379,25 +384,24 @@ public class C206_CaseStudyTest {
 	//Joshua
 	@Test
 	public void addCustomer() {
-		assertNotNull("Checks for valid arraylist", userCustList);
+		assertNotNull("Check for valid arraylist", userCustList);
 		C206_CaseStudy.addCustomer(userCustList, j1);
-		assertEquals("Checks if arraylist size is 1" , 1, userCustList.size());
+		assertEquals("Check if arraylist size is 1" , 1, userCustList.size());
 	}
 	//Joshua
 	@Test
 	public void retrieveCustomer() {
-		String custoutput = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
+		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
 		addCustomer();
-		assertEquals("Checks if its retrieved properly", custoutput, C206_CaseStudy.retrieveAllCustomer(userCustList));
+		assertEquals("checks if its retrieved properly", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
 
 	}
 	//Joshua
 	@Test
 	public void viewCustomer() {
 		addCustomer();
-		String custoutput = C206_CaseStudy.retrieveAllCustomer(userCustList);
-		assertEquals("Checks if view all is working properly.", custoutput, C206_CaseStudy.retrieveAllCustomer(userCustList));
-
+		String output = C206_CaseStudy.retrieveAllCustomer(userCustList);
+		assertEquals("Checks if view all is working properly.", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
 	}
 	//Joshua
 	@Test
@@ -405,6 +409,5 @@ public class C206_CaseStudyTest {
 		addCustomer();
 		C206_CaseStudy.deleteCustomer(userCustList);
 		assertEquals("Checks if deleted properly,", 0, userCustList.size());
-
 	}
 }
