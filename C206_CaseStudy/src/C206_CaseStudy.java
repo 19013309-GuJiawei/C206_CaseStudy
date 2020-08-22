@@ -735,7 +735,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < userCustList.size(); i++) {
 			
-			if (userCustList.get(i).getName() == delete) {
+			if (userCustList.get(i).getName().equals(delete)) {
 				userCustList.remove(i);
 				System.out.println("User Account deleted");
 			}

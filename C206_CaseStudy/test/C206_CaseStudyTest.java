@@ -425,6 +425,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addCustomer(userCustList, j1);
 		assertEquals("Check if arraylist size is 1" , 1, userCustList.size());
 	}
+	
 	//Joshua
 	@Test
 	public void retrieveCustomer() {
