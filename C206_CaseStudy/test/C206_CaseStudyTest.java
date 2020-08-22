@@ -402,7 +402,7 @@ public class C206_CaseStudyTest {
 	//Joshua
 	@Test
 	public void retrieveCustomer() {
-		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
+		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "PASSWORD", "EMAIL", "STATUS");
 		addCustomer();
 		assertEquals("checks if its retrieved properly", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
 
