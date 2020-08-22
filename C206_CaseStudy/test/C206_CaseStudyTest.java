@@ -1,18 +1,15 @@
 import static org.junit.Assert.*;
-
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
 import java.util.ArrayList;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 
 public class C206_CaseStudyTest {
+	
 	private ArrayList<Package> packageList;
 	private ArrayList<RequestQuotation> requestquotationList;
 	private Package p1;
@@ -21,6 +18,7 @@ public class C206_CaseStudyTest {
 	//Joshua
 	private ArrayList<Customer> userCustList;
 	private Customer j1;
+	
 	//Alyssa
 	private ArrayList<Quotation> manageQuotationList;
 	private Quotation q1;
@@ -63,19 +61,24 @@ public class C206_CaseStudyTest {
 		// jiawei
 		LocalDate localDate1 = LocalDate.parse("20/08/2021", date_format);
 		LocalTime localtime1 = LocalTime.parse("20:00", time_format);
+		
 		//Jiawei
 		LocalDate localDate2 = LocalDate.parse("24/08/2021", date_format);
 		LocalTime localtime2 = LocalTime.parse("15:00", time_format);
+		
 		//Jiawei
 		LocalDate localDate3 = LocalDate.parse("24/08/2019", date_format);
 		LocalTime localtime3 = LocalTime.parse("15:00", time_format);
+		
 		//Jiawei
 		LocalTime localtime4 = LocalTime.parse("15:00", time_format);
+		
 		//Jiawei
 		a1 = new Appointment(localDate1, localtime1, "Tim", "Address1", "Customer1");
 		a2 = new Appointment(localDate2, localtime2, "Tom", "Address2", "Customer2");
 		a3 = new Appointment(localDate3, localtime3, "Jason", "Address3", "Customer3");
 		a4 = new Appointment(LocalDate.now(), localtime4, "Andrew", "Address4", "Customer4");
+		
 		//Jiawei
 		appointmentList = new ArrayList<Appointment>();
 
@@ -83,6 +86,7 @@ public class C206_CaseStudyTest {
 	//Jiawei
 	@Test
 	public void addAppointmentTest() {
+		
 		// appointment list is not null, so that can add a new appointment
 		assertNotNull("Test if there is valid Appointment arraylist to add to", appointmentList);
 
@@ -100,6 +104,7 @@ public class C206_CaseStudyTest {
 	//Jiawei
 	@Test
 	public void removeAppointmentTest() {
+		
 		// Add an appointment into the list and remove it, the size of the list should be 0
 		C206_CaseStudy.addAppointment(appointmentList, a2);
 		C206_CaseStudy.removeAppointment(appointmentList, a2,"Customer2");
@@ -120,6 +125,7 @@ public class C206_CaseStudyTest {
 	//Jiawei
 	@Test
 	public void viewAppointmentTest() {
+		
 		// Test the appointment list is null if we have not added anything 
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", appointmentList);
 		String allAppointment = C206_CaseStudy.retrieveAllAppointment(appointmentList);
@@ -147,6 +153,7 @@ public class C206_CaseStudyTest {
 	//Jiawei
 	@Test
 	public void UpdateAppointmentTest() {
+		
 		// Item list is not null, so that can update an appointment
 		assertNotNull("Test if there is valid Appointment arraylist to update", appointmentList);
 
@@ -180,6 +187,7 @@ public class C206_CaseStudyTest {
 
 	@After
 	public void tearDown() throws Exception {
+		
 		//Jiawei
 		a1 = null;
 		a2 = null;
@@ -210,9 +218,8 @@ public class C206_CaseStudyTest {
 
 
 	//Jonathan
-
-
 	public void addPackageTest() {
+		
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Test if there is valid package arraylist to add to", packageList);
 
@@ -279,6 +286,7 @@ public class C206_CaseStudyTest {
 	//Jonathan 
 	
 	public void deletePackageTest() {
+		
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Package arraylist to retrieve item", packageList);
 
@@ -296,6 +304,7 @@ public class C206_CaseStudyTest {
 	//Daven
 
 	public void addRequestQuotation() {
+		
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Test if there is valid Request Quotation arraylist to add to", requestquotationList);
 
@@ -316,6 +325,7 @@ public class C206_CaseStudyTest {
 	//Daven
 	
 	public void retrieveAllRequestQuotationTest() {
+		
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Request Quotation arraylist to retrieve item", requestquotationList);
 
@@ -335,13 +345,13 @@ public class C206_CaseStudyTest {
 		testOutput += String.format("%-15s %-10s %-10s %-20s %-10s %-15s %-15s %-15s %-15s","HDB", "200", "888", "456@gmail.com", "200.1", "null", "Living room", "old", "none" );
 
 		assertEquals("Test that ViewAllRequestQuotation", testOutput, allRequestQuotation);
-
 	}
 
 
 	//Daven
 
 	public void deleteRequestQuotationTest() {
+		
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Request Quotation arraylist to retrieve item", requestquotationList);
 
@@ -356,45 +366,61 @@ public class C206_CaseStudyTest {
 
 	}
 
-
-
-
-
-
 	//Alyssa
 	@Test
 	public void addQuotationTest() {
+		
+		//Test if item list is not null but empty -boundary
 		assertNotNull("Check for valid arraylist", manageQuotationList);
+		
+		//Given an empty list, after adding an item, test if the size of list is 1 -normal
 		C206_CaseStudy.addQuotation(manageQuotationList, q1);
+		
+		//Add an item and test if size of ArrayList is 1
 		assertEquals("Check if arraylist size is 1" , 1, manageQuotationList.size());
 	}
 
 	//Alyssa
 	@Test
 	public void retrieveQuotationTest() {
+		
+		//Given the list, add item 
+		//Test if expected output String is the same as list of package retrieved
 		String output = String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n", 1, 1, "test", "test", "test", "test", 5.00);
 		addQuotationTest();
+		
+		//Test if output string is the same as list received
 		assertEquals("checks if its retrieved properly", output, C206_CaseStudy.retreiveAllQuotation(manageQuotationList));
 	}
 
 	//Alyssa
 	@Test
 	public void viewQuotationTest() {
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
 		addQuotationTest();
 		String output = C206_CaseStudy.retreiveAllQuotation(manageQuotationList);
+		
+		//Test if the expected output String is the same as the list of package retrieved
 		assertEquals("Checks if view all is working properly.", output, C206_CaseStudy.retreiveAllQuotation(manageQuotationList));
 	}
 
 	//Alyssa
 	@Test
 	public void deleteQuotationTest() {
+		
 		addQuotationTest();
+		
+		//Given an empty list, after deleting 1 item, test if the size of the list is 1 - normal
 		C206_CaseStudy.deleteQuotation(manageQuotationList, 1);
 		assertEquals("checks if deleted properly,", 0, manageQuotationList.size());
 	}
+	
+	
 	//Joshua
 	@Test
 	public void addCustomer() {
+		
 		assertNotNull("Check for valid arraylist", userCustList);
 		C206_CaseStudy.addCustomer(userCustList, j1);
 		assertEquals("Check if arraylist size is 1" , 1, userCustList.size());
@@ -402,6 +428,7 @@ public class C206_CaseStudyTest {
 	//Joshua
 	@Test
 	public void retrieveCustomer() {
+		
 		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "PASSWORD", "EMAIL", "STATUS");
 		addCustomer();
 		assertEquals("checks if its retrieved properly", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
@@ -410,6 +437,7 @@ public class C206_CaseStudyTest {
 	//Joshua
 	@Test
 	public void viewCustomer() {
+		
 		addCustomer();
 		String output = C206_CaseStudy.retrieveAllCustomer(userCustList);
 		assertEquals("Checks if view all is working properly.", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
@@ -417,6 +445,7 @@ public class C206_CaseStudyTest {
 	//Joshua
 	@Test
 	public void deleteCustomer() {
+		
 		addCustomer();
 		C206_CaseStudy.deleteCustomer(userCustList);
 		assertEquals("Checks if deleted properly,", 0, userCustList.size());
