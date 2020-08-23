@@ -447,9 +447,6 @@ public class C206_CaseStudyTest {
 	//Joshua
 	@Test
 	public void viewCustomertest() {
-		
-		addCustomertest();
-
 		// Given an empty list, check if the list size is 2 after adding 2 products(Normal)
 		addCustomertest();
 
