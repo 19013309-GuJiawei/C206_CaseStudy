@@ -48,8 +48,8 @@ public class C206_CaseStudyTest {
 
 		requestquotationList = new ArrayList<RequestQuotation>();
 
-		p1 = new Package(1, "Package Number 1",  null, null, 100.50);
-		p2 = new Package(2, "Package Number 2",  null, null, 10.50);
+		p1 = new Package(1 , "Package Number 1" , null , null , 100.50);
+		p2 = new Package(2 , "Package Number 2" , null , null , 10.50);
 
 		q1 = new Quotation(1, 1, "test", "test", "test", "test", 5);
 
@@ -135,7 +135,7 @@ public class C206_CaseStudyTest {
 		// Test that the appointment list is not null if we made appointment
 		C206_CaseStudy.addAppointment(appointmentList, a2);
 		allAppointment = C206_CaseStudy.retrieveAllAppointment(appointmentList);
-		testOutput += String.format("%-10s %-30s %-30s %-30s %-20s\n", "2021-08-24", "15:00",
+		testOutput += String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n","A2", "2021-08-24", "15:00",
 				"Tom", "Address2","Customer2");
 		assertEquals("Check that ViewAllAppointment", testOutput, allAppointment);
 
@@ -143,9 +143,9 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addAppointment(appointmentList, a1);
 		C206_CaseStudy.addAppointment(appointmentList, a2);
 		allAppointment = C206_CaseStudy.retrieveAllAppointment(appointmentList);
-		testOutput += String.format("%-10s %-30s %-30s %-30s %-20s\n", "2021-08-20", "20:00",
+		testOutput += String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n","A1", "2021-08-20", "20:00",
 				"Tim", "Address1","Customer1");
-		testOutput += String.format("%-10s %-30s %-30s %-30s %-20s\n", "2021-08-24", "15:00",
+		testOutput += String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n","A2", "2021-08-24", "15:00",
 				"Tom", "Address2","Customer2");
 		assertEquals("Check that ViewAllAppointment", testOutput, allAppointment);
 
@@ -218,6 +218,7 @@ public class C206_CaseStudyTest {
 
 
 	//Jonathan
+	@Test
 	public void addPackageTest() {
 		
 		// Item list is not null, so that can add a new item - boundary
@@ -238,8 +239,8 @@ public class C206_CaseStudyTest {
 
 	
 	//Jonathan 
-
-	public void retrieveAllPackageTest() {
+	@Test
+	public void retrievePackageTest() {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Package arraylist to retrieve item", packageList);
 
@@ -248,22 +249,21 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		assertEquals("Check that ViewAllPackagelist", testOutput, allPackage);
 
-		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-		C206_CaseStudy.addPackage(packageList, p1);
-		C206_CaseStudy.addPackage(packageList, p2);
+		//Given an empty list, after adding 1 items, test if the size of the list is 2 - normal
+		addPackageTest();
 		assertEquals("Test that Package arraylist size is 2", 2, packageList.size());
 
 		//test if the expected output string same as the list of package retrieved from the SourceCentre	
 		allPackage= C206_CaseStudy.retrieveAllPackage(packageList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","1", "Package Number 1", "null", "null", "100.50");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","2", "Package Number 2", "null", "null", "10.50" );
+		testOutput = String.format("%-10d %-30s %-15s %-15s $%-15.2f \n",1,"Package Number 1",null,null,100.50);
+		testOutput += String.format("%-10d %-30s %-15s %-15s $%-15.2f \n",2,"Package Number 2",null,null,10.50);
 
-		assertEquals("Test that ViewAllPackage", testOutput, allPackage);
+		assertEquals("Test that ViewAllPackage", testOutput, C206_CaseStudy.retrieveAllPackage(packageList));
 
 	}
 	
 	//Jonathan 
-
+	@Test
 	public void updatePackageTest() {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Package arraylist to retrieve item", packageList);
@@ -278,13 +278,13 @@ public class C206_CaseStudyTest {
 
 		//Test if the expected output string is the updated list of package in the SourceCentre
 		String allPackage= C206_CaseStudy.retrieveAllPackage(packageList);
-		String testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","1", "This is updated Package Number 1", "null", "null", "400");
+		String testOutput = String.format("%-10d %-30s %-15s %-15s $%-15.2f \n",1, "This is updated Package Number 1",null, null, 400.00);
 
 		assertEquals("Test that updatePackage", testOutput, allPackage);
 	}
 
 	//Jonathan 
-	
+	@Test
 	public void deletePackageTest() {
 		
 		// Test if Item list is not null but empty -boundary
@@ -296,13 +296,13 @@ public class C206_CaseStudyTest {
 
 		//Test if the package is gone when i delete it
 
-		C206_CaseStudy.deletePackage(packageList);
+		C206_CaseStudy.deletePackage(packageList,1);
 		assertEquals("Test that Package arraylist size is 1", 1, packageList.size());
 
 	}
 	
 	//Daven
-
+	@Test
 	public void addRequestQuotation() {
 		
 		// Item list is not null, so that can add a new item - boundary
@@ -318,13 +318,13 @@ public class C206_CaseStudyTest {
 		//The item just added is as same as the second item of the list
 		C206_CaseStudy.addRequestQuotation(requestquotationList, rq2);
 		assertEquals("Test that Request Quotation arraylist size is 2", 2, requestquotationList.size());
-		assertSame("Test that Request Quotation is added", p2, requestquotationList.get(1));
+		assertSame("Test that Request Quotation is added", rq2, requestquotationList.get(1));
 	}
 
 
 	//Daven
-	
-	public void retrieveAllRequestQuotationTest() {
+	@Test
+	public void retrieveRequestQuotationTest() {
 		
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Request Quotation arraylist to retrieve item", requestquotationList);
@@ -341,15 +341,15 @@ public class C206_CaseStudyTest {
 
 		//test if the expected output string same as the list of package retrieved from the SourceCentre	
 		allRequestQuotation= C206_CaseStudy.retrieveAllRequestQuotation(requestquotationList);
-		testOutput = String.format("%-15s %-10s %-10d %-20s %-10s %-15s %-15s %-15s %-15s", "HDB", "100", "999", "123@gmail.com", "100.1", "null", "Whole house", "modern", "none");
-		testOutput += String.format("%-15s %-10s %-10s %-20s %-10s %-15s %-15s %-15s %-15s","HDB", "200", "888", "456@gmail.com", "200.1", "null", "Living room", "old", "none" );
+		testOutput = String.format("%-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15s %-15s %-15s\n", "HDB", 100.00, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none");
+		testOutput += String.format("%-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15s %-15s %-15s\n","HDB", 200.00, 888, "456@gmail.com", 200.1, null, "Living room", "old", "none" );
 
 		assertEquals("Test that ViewAllRequestQuotation", testOutput, allRequestQuotation);
 	}
 
 
 	//Daven
-
+	@Test
 	public void deleteRequestQuotationTest() {
 		
 		// Test if Item list is not null but empty -boundary
@@ -357,11 +357,11 @@ public class C206_CaseStudyTest {
 
 		//Given an empty list, after adding 1 items, test if the size of the list is 1 - normal
 		C206_CaseStudy.addRequestQuotation(requestquotationList, rq1);
-		C206_CaseStudy.addRequestQuotation(requestquotationList, rq2);
+		
 
 		//Test if the package is gone when i delete it
 
-		C206_CaseStudy.deleteRequestQuotation(requestquotationList);
+		C206_CaseStudy.deleteRequestQuotation(requestquotationList,1);
 		assertEquals("Test that Request Quotation arraylist size is 1", 1, requestquotationList.size());
 
 	}
@@ -419,11 +419,15 @@ public class C206_CaseStudyTest {
 	
 	//Joshua
 	@Test
-	public void addCustomer() {
+	public void addCustomertest() {
 		
+
 		// Check if the list�is not null but empty boundary
+
+		// Check if the list is not null but empty boundary
+
 		assertNotNull("Check for valid arraylist", userCustList);
-		// Having added an item to an empty list, test if the list size is 1 -normal
+		// Having added an item to an empty list, test if the list size is 1
 		C206_CaseStudy.addCustomer(userCustList, j1);
 		// Add an item and test if ArrayList has a size of 1
 		assertEquals("Check if arraylist size is 1" , 1, userCustList.size());
@@ -431,21 +435,24 @@ public class C206_CaseStudyTest {
 	
 	//Joshua
 	@Test
-	public void retrieveCustomer() {
+	public void retrieveCustomertest() {
 		
 		// Remove customer according to the list. Check if planned output String is the same as retrieved package list
 		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "PASSWORD", "EMAIL", "STATUS");
-		addCustomer();
+		addCustomertest();
 		// Check if output string is similar to the received list
 		assertEquals("checks if its retrieved properly", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
 
 	}
 	//Joshua
 	@Test
-	public void viewCustomer() {
+	public void viewCustomertest() {
 		
-		// Given an empty list, check if the list size is 2�after adding 2 products(Normal)
-		addCustomer();
+		addCustomertest();
+
+		// Given an empty list, check if the list size is 2 after adding 2 products(Normal)
+		addCustomertest();
+
 		String output = C206_CaseStudy.retrieveAllCustomer(userCustList);
 		// Test if the predicted output String is the same as the retrieved list
 		assertEquals("Checks if view all is working properly.", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
@@ -454,9 +461,10 @@ public class C206_CaseStudyTest {
 	@Test
 	public void deleteCustomer() {
 		
-		addCustomer();
+		assertNotNull("Test if there is valid Request Quotation arraylist to retrieve item", userCustList);
 		// Check if the list size is 1 given an empty list after deleting 1 customer
-		C206_CaseStudy.deleteCustomer(userCustList);
+		C206_CaseStudy.deleteCustomer(userCustList, "Customer");
+		C206_CaseStudy.deleteCustomer(userCustList,"NAME");
 		assertEquals("Checks if deleted properly,", 0, userCustList.size());
 	}
 }
