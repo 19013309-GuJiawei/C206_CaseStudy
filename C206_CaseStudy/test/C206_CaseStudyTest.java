@@ -458,6 +458,7 @@ public class C206_CaseStudyTest {
 
 		// Check if the list size is 1 given an empty list after deleting 1 customer
 		C206_CaseStudy.deleteCustomer(userCustList, "Customer");
+		C206_CaseStudy.deleteCustomer(userCustList,"NAME");
 		assertEquals("Checks if deleted properly,", 0, userCustList.size());
 	}
 }
