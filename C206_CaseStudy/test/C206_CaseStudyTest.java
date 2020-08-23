@@ -423,7 +423,7 @@ public class C206_CaseStudyTest {
 		
 		// Check if the list is not null but empty boundary
 		assertNotNull("Check for valid arraylist", userCustList);
-		// Having added an item to an empty list, test if the list size is 1 -normal
+		// Having added an item to an empty list, test if the list size is 1
 		C206_CaseStudy.addCustomer(userCustList, j1);
 		// Add an item and test if ArrayList has a size of 1
 		assertEquals("Check if arraylist size is 1" , 1, userCustList.size());
