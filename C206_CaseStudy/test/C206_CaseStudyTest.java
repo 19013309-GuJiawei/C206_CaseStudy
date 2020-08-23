@@ -190,18 +190,22 @@ public class C206_CaseStudyTest {
 		String searchAppointment = C206_CaseStudy.searchAppointment(appointmentList, 1, "Customer1");
 		String testOutput = String.format( "%-10s %-10s %-30s %-30s %-30s %-20s\n", "ID", "DATE", "TIME", "DESIGNER NAME", "ADDRESS", "CUSTOMER NAME");
 		assertEquals("Check that ViewAllAppointment", testOutput, searchAppointment);
+		
 		// Check that if we can search appointment by customer name in appointmentList
 		C206_CaseStudy.addAppointment(appointmentList, a1);
 		searchAppointment = C206_CaseStudy.searchAppointment(appointmentList, 1, "Customer1");
 		testOutput += String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n","A1", "2021-08-20", "20:00",
 				"Tim", "Address1","Customer1");
 		assertEquals("Check that ViewAllAppointment", testOutput, searchAppointment);
+		
 		// Check that if we can search appointment by designer name in appointmentList
 		searchAppointment = C206_CaseStudy.searchAppointment(appointmentList, 2, "tim");
 		assertEquals("Check that ViewAllAppointment", testOutput, searchAppointment);
+		
 		// Check that if we can search appointment by appointment date in appointmentList
 		searchAppointment = C206_CaseStudy.searchAppointment(appointmentList, 3, "20/08/2021");
 		assertEquals("Check that ViewAllAppointment", testOutput, searchAppointment);
+		
 		// Check that if another appointment were added, can the appointment still be found by appointment date
 		C206_CaseStudy.addAppointment(appointmentList, a2);
 		String testOutput2 = String.format( "%-10s %-10s %-30s %-30s %-30s %-20s\n", "ID", "DATE", "TIME", "DESIGNER NAME", "ADDRESS", "CUSTOMER NAME");
@@ -209,6 +213,7 @@ public class C206_CaseStudyTest {
 		testOutput2 += String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n","A2", "2021-08-24", "15:00",
 				"Tom", "Address2","Customer2");
 		assertEquals("Check that ViewAllAppointment", testOutput2, searchAppointment);
+		
 		// If appointment date were entered wrongly, appointment will not be shown
 		searchAppointment = C206_CaseStudy.searchAppointment(appointmentList, 3, "12/03/2022");
 		String testOutput3 = String.format( "%-10s %-10s %-30s %-30s %-30s %-20s\n", "ID", "DATE", "TIME", "DESIGNER NAME", "ADDRESS", "CUSTOMER NAME");
