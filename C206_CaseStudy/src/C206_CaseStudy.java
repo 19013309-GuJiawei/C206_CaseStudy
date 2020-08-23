@@ -295,12 +295,14 @@ public class C206_CaseStudy {
 
 	// JiaWei
 	private static void appointmentMenu() {
-
+		Helper.line(80, "-");
 		System.out.println("1. View All Designers");
 		System.out.println("2. Make Appointment");
 		System.out.println("3. Update Appointment");
 		System.out.println("4. Delete Appointment");
 		System.out.println("5. View Appointment");
+		System.out.println("6. View Appointment");
+		Helper.line(80, "-");
 
 	}
 
@@ -367,12 +369,12 @@ public class C206_CaseStudy {
 							LocalDate localDate1 = LocalDate.parse(appointmentDate1, date_format);
 							appointmentList.get(i).setDateOfAppointment(localDate1);
 
-						} else if (adminOption == 2) {
+						} else if (adminOption == 3) {
 							String appointmentTime1 = Helper.readString("Enter new appointment Time (hh:ss): ");
 							LocalTime localtime2 = LocalTime.parse(appointmentTime1, time_format);
 							appointmentList.get(i).setTimeOfAppointment(localtime2);
 
-						} else if (adminOption == 2) {
+						} else if (adminOption == 4) {
 							String designerName1 = Helper.readString("Enter New Designer Name: ");
 							appointmentList.get(i).setDesignerName(designerName1);
 
@@ -384,8 +386,6 @@ public class C206_CaseStudy {
 						System.out.println("Unable to update!");
 					}
 
-				} else {
-					System.out.println("Customer not Found !");
 				}
 			}
 
@@ -396,9 +396,68 @@ public class C206_CaseStudy {
 			// View Appointment
 			viewAllAppointment(appointmentList);
 
-		} else {
+		} else if (appointmentOption == 6) {
+			searchAppointmentBy();
 
+		} else {
+			System.out.println("Invaild Option!");
 		}
+	}
+
+	private static void searchAppointmentBy() {
+		Helper.line(80, "-");
+		System.out.println("Option 1: Search Appointment by Customer");
+		System.out.println("Option 2: Search Appointment by Designer Name");
+		System.out.println("Option 3: Search Appointment Appointment Date");
+		Helper.line(80, "-");
+		int option = Helper.readInt("Enter option: ");
+		if (option == 1) {
+			String customer = Helper.readString("Enter Customer Name: ");
+			System.out.println(searchAppointment(appointmentList, option, customer));
+		} else if (option == 2) {
+			String desginer = Helper.readString("Enter Designer Name: ");
+			System.out.println(searchAppointment(appointmentList, option, desginer));
+		} else if (option == 3) {
+			String date = Helper.readString("Enter Appointment Date(dd/mm/yyyy): ");
+			System.out.println(searchAppointment(appointmentList, option, date));
+		}
+	}
+
+	public static String searchAppointment(ArrayList<Appointment> appointmentList, int option, String searchBy) {
+		String output = String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n", "ID", "DATE", "TIME", "DESIGNER NAME",
+				"ADDRESS", "CUSTOMER NAME");
+		if (option == 1) {
+			for (int i = 0; i < appointmentList.size(); i++) {
+				if (searchBy.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
+					output = outputFormat(appointmentList, output, i);
+				}
+			}
+		} else if (option == 2) {
+			for (int i = 0; i < appointmentList.size(); i++) {
+				if (searchBy.equalsIgnoreCase(appointmentList.get(i).getDesignerName())) {
+					output = outputFormat(appointmentList, output, i);
+					
+				}
+			}
+		} else if (option == 3) {
+			LocalDate localDate = LocalDate.parse(searchBy, date_format);
+			for (int i = 0; i < appointmentList.size(); i++) {
+				if (localDate.isEqual(appointmentList.get(i).getDateOfAppointment())) {
+					output = outputFormat(appointmentList, output, i);
+				}
+			}
+		}
+
+		return output;
+	}
+
+	private static String outputFormat(ArrayList<Appointment> appointmentList, String output, int i) {
+		output += String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n", appointmentList.get(i).getId(),
+				appointmentList.get(i).getDateOfAppointment().toString(),
+				appointmentList.get(i).getTimeOfAppointment().toString(),
+				appointmentList.get(i).getDesignerName(), appointmentList.get(i).getAddress(),
+				appointmentList.get(i).getCustomer());
+		return output;
 	}
 
 	private static void updateMenu() {
@@ -443,10 +502,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < appointmentList.size(); i++) {
 
-			output += String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n", appointmentList.get(i).getId(),
-					appointmentList.get(i).getDateOfAppointment().toString(),
-					appointmentList.get(i).getTimeOfAppointment().toString(), appointmentList.get(i).getDesignerName(),
-					appointmentList.get(i).getAddress(), appointmentList.get(i).getCustomer());
+			output = outputFormat(appointmentList, output, i);
 		}
 
 		return output;
@@ -756,4 +812,5 @@ public class C206_CaseStudy {
 			}
 		}
 	}
+
 }
