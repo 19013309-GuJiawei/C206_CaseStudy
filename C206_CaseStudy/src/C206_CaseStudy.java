@@ -19,8 +19,8 @@ public class C206_CaseStudy {
 		LocalDate localDate1 = LocalDate.parse("20/08/2021", date_format);
 		LocalTime localtime1 = LocalTime.parse("20:00", time_format);
 		LocalTime localtime2 = LocalTime.parse("13:00", time_format);
-		Appointment a1 = new Appointment(localDate1, localtime1, "Tim", "Address Blk1", "Customer123");
-		Appointment a2 = new Appointment(LocalDate.now(), localtime2, "Tom", "Address Blk10", "Customer321");
+		Appointment a1 = new Appointment(localDate1, localtime1, "Tim", "Address Blk1", "Customer123", "A1");
+		Appointment a2 = new Appointment(LocalDate.now(), localtime2, "Tom", "Address Blk10", "Customer321", "A2");
 		appointmentList.add(a1);
 		appointmentList.add(a2);
 		designerList.add(new Designer("Tim"));
@@ -210,10 +210,15 @@ public class C206_CaseStudy {
 	private static void removeAppointment() {
 
 		String customerName = Helper.readString("Enter Customer Name: ");
+		String id = Helper.readString("Enter Appointment id: ");
 
 		for (int i = 0; i < appointmentList.size(); i++) {
 			if (customerName.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
-				removeAppointment(appointmentList, appointmentList.get(i), customerName);
+				if (id.equalsIgnoreCase(appointmentList.get(i).getId())) {
+					removeAppointment(appointmentList, appointmentList.get(i), customerName, id);
+				}else {
+					System.out.println("Invaild Appointment ID!");
+				}
 
 			} else {
 				System.out.println("Customer not Found !");
@@ -231,7 +236,7 @@ public class C206_CaseStudy {
 		LocalDate localDate3 = LocalDate.parse(appointmentDate, date_format);
 		LocalTime localtime3 = LocalTime.parse(appointmentTime, time_format);
 		Appointment appointment1 = new Appointment(localDate3, localtime3, designerName, address,
-				customerName);
+				customerName, "A"+appointmentList.size());
 		addAppointment(appointmentList, appointment1);
 	}
 
@@ -410,13 +415,17 @@ public class C206_CaseStudy {
 
 	}
 
-	public static void removeAppointment(ArrayList<Appointment> appointmentList, Appointment a, String name) {
+	public static void removeAppointment(ArrayList<Appointment> appointmentList, Appointment a, String name, String id) {
 
 		for (int i = 0; i < appointmentList.size(); i++) {
 
 			if (name.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
-				appointmentList.remove(a);
-				System.out.println("Appointment removed!");
+				if (id.equalsIgnoreCase(appointmentList.get(i).getId())) {
+					appointmentList.remove(a);
+					System.out.println("Appointment removed!");
+				}else {
+					System.out.println("Invaild Appointment ID!");
+				}
 
 			} else {
 				System.out.println("Customer not Found!");
@@ -430,7 +439,8 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < appointmentList.size(); i++) {
 
-			output += String.format("%-10s %-30s %-30s %-30s %-20s\n",
+			output += String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n",
+					appointmentList.get(i).getId(),
 					appointmentList.get(i).getDateOfAppointment().toString(),
 					appointmentList.get(i).getTimeOfAppointment().toString(), appointmentList.get(i).getDesignerName(),
 					appointmentList.get(i).getAddress(), appointmentList.get(i).getCustomer());
@@ -442,7 +452,7 @@ public class C206_CaseStudy {
 	public static void viewAllAppointment(ArrayList<Appointment> appointmentList) {
 
 		Helper.line(120, "-");
-		String output = String.format("%-10s %-30s %-30s %-30s %-20s\n", "DATE", "TIME", "DESIGNER NAME", "ADDRESS",
+		String output = String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n","ID", "DATE", "TIME", "DESIGNER NAME", "ADDRESS",
 				"CUSTOMER NAME");
 		output += retrieveAllAppointment(appointmentList);
 		System.out.println(output);
@@ -458,9 +468,6 @@ public class C206_CaseStudy {
 
 				if (currentDate != appointmentList.get(i).getDateOfAppointment()
 						&& currentDate.isBefore(appointmentList.get(i).getDateOfAppointment())) {
-
-					System.out.println("Hi");
-
 					return true;
 				}
 			}

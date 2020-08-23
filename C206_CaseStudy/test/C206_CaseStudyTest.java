@@ -74,10 +74,10 @@ public class C206_CaseStudyTest {
 		LocalTime localtime4 = LocalTime.parse("15:00", time_format);
 		
 		//Jiawei
-		a1 = new Appointment(localDate1, localtime1, "Tim", "Address1", "Customer1");
-		a2 = new Appointment(localDate2, localtime2, "Tom", "Address2", "Customer2");
-		a3 = new Appointment(localDate3, localtime3, "Jason", "Address3", "Customer3");
-		a4 = new Appointment(LocalDate.now(), localtime4, "Andrew", "Address4", "Customer4");
+		a1 = new Appointment(localDate1, localtime1, "Tim", "Address1", "Customer1", "A1");
+		a2 = new Appointment(localDate2, localtime2, "Tom", "Address2", "Customer2", "A2");
+		a3 = new Appointment(localDate3, localtime3, "Jason", "Address3", "Customer3", "A3");
+		a4 = new Appointment(LocalDate.now(), localtime4, "Andrew", "Address4", "Customer4", "A4");
 		
 		//Jiawei
 		appointmentList = new ArrayList<Appointment>();
@@ -107,18 +107,18 @@ public class C206_CaseStudyTest {
 		
 		// Add an appointment into the list and remove it, the size of the list should be 0
 		C206_CaseStudy.addAppointment(appointmentList, a2);
-		C206_CaseStudy.removeAppointment(appointmentList, a2,"Customer2");
+		C206_CaseStudy.removeAppointment(appointmentList, a2,"Customer2", "A2");
 		assertEquals("Test Appointment arraylist size is 0?", 0, appointmentList.size());
 
 		// Add 2 appointment into the list and remove it, the size of the list should be 1
 		C206_CaseStudy.addAppointment(appointmentList, a1);
 		C206_CaseStudy.addAppointment(appointmentList, a2);
-		C206_CaseStudy.removeAppointment(appointmentList, a2,"Customer2");
+		C206_CaseStudy.removeAppointment(appointmentList, a2,"Customer2", "A2");
 		assertEquals("Test Appointment arraylist size is 1?", 1, appointmentList.size());
 
 		// If the customer enter their name worngly, they should not be able to remove an item, the size of the list will still be 1
 		C206_CaseStudy.addAppointment(appointmentList, a2);
-		C206_CaseStudy.removeAppointment(appointmentList, a2,"Customer1");
+		C206_CaseStudy.removeAppointment(appointmentList, a2,"Customer1", "A1");
 		assertEquals("Test Appointment arraylist size is 1?", 1, appointmentList.size());
 
 	}
@@ -162,25 +162,25 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addAppointment(appointmentList, a1);
 		boolean isAble = C206_CaseStudy.isAbleUpdate(appointmentList, a1,"Customer1",currentDate);
 		assertEquals(true, isAble);
-		C206_CaseStudy.removeAppointment(appointmentList, a1,"Customer1");
+		C206_CaseStudy.removeAppointment(appointmentList, a1,"Customer1", "A1");
 
 		// Change must be at least 1 day before the appointment date, if not customer is not able to change
 		C206_CaseStudy.addAppointment(appointmentList, a4);
 		boolean isAbleWithCurrentDate = C206_CaseStudy.isAbleUpdate(appointmentList, a4,"Customer4",currentDate);
 		assertEquals(false, isAbleWithCurrentDate);
-		C206_CaseStudy.removeAppointment(appointmentList, a4,"Customer4");
+		C206_CaseStudy.removeAppointment(appointmentList, a4,"Customer4", "A4");
 
 		// If the appointment date is passed, the customer is not able to change
 		C206_CaseStudy.addAppointment(appointmentList, a3);
 		boolean isAbleWithExpired = C206_CaseStudy.isAbleUpdate(appointmentList, a3,"Customer3",currentDate);
 		assertEquals(false, isAbleWithExpired);
-		C206_CaseStudy.removeAppointment(appointmentList, a3,"Customer3");
+		C206_CaseStudy.removeAppointment(appointmentList, a3,"Customer3", "A3");
 
 		// The customer is not able to change with the worng customer name entered
 		C206_CaseStudy.addAppointment(appointmentList, a1);
 		boolean wrongName = C206_CaseStudy.isAbleUpdate(appointmentList, a1,"Customer2",currentDate);
 		assertEquals(false, wrongName);
-		C206_CaseStudy.removeAppointment(appointmentList, a1,"Customer1");
+		C206_CaseStudy.removeAppointment(appointmentList, a1,"Customer1", "A1");
 	}
 
 
@@ -421,7 +421,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void addCustomer() {
 		
-		// Check if the list is not null but empty boundary
+		// Check if the listï¿½is not null but empty boundary
 		assertNotNull("Check for valid arraylist", userCustList);
 		// Having added an item to an empty list, test if the list size is 1 -normal
 		C206_CaseStudy.addCustomer(userCustList, j1);
@@ -444,7 +444,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void viewCustomer() {
 		
-		// Given an empty list, check if the list size is 2 after adding 2 products(Normal)
+		// Given an empty list, check if the list size is 2ï¿½after adding 2 products(Normal)
 		addCustomer();
 		String output = C206_CaseStudy.retrieveAllCustomer(userCustList);
 		// Test if the predicted output String is the same as the retrieved list
