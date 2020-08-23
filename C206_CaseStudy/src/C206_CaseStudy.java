@@ -191,7 +191,7 @@ public class C206_CaseStudy {
 					}
 
 					else if (quotationOption == 3) {
-						int delete = Helper.readInt("Enter Question ID To Delete: ");
+						int delete = Helper.readInt("Enter Quotation ID To Delete: ");
 						C206_CaseStudy.deleteQuotation(manageQuotationList, delete);
 					}
 
@@ -738,13 +738,14 @@ public class C206_CaseStudy {
 	}
 
 	//Delete Customer
-	public static void deleteCustomer(ArrayList<Customer> userCustList) {
-		String delete = Helper.readString("Enter Customer Name> ");
+	public static void deleteCustomer(ArrayList<Customer> userCustList, String delete) {
+		
+		
 		for (int i = 0; i < userCustList.size(); i++) {
 
-			if (userCustList.get(i).getName() == delete) {
+			if (userCustList.get(i).getName().equals(delete)) {
 				userCustList.remove(i);
-				System.out.println("Request Quotation removed!");
+				System.out.println("Customer removed!");
 			}
 		}
 	}
