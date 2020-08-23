@@ -455,7 +455,6 @@ public class C206_CaseStudyTest {
 	public void deleteCustomer() {
 		
 		assertNotNull("Test if there is valid Request Quotation arraylist to retrieve item", userCustList);
-
 		// Check if the list size is 1 given an empty list after deleting 1 customer
 		C206_CaseStudy.deleteCustomer(userCustList, "Customer");
 		C206_CaseStudy.deleteCustomer(userCustList,"NAME");
