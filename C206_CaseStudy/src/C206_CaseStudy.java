@@ -739,14 +739,12 @@ public class C206_CaseStudy {
 
 	//Delete Customer
 	public static void deleteCustomer(ArrayList<Customer> userCustList) {
-
-		String delete = Helper.readString("Please enter username to delete> ");
-
+		String delete = Helper.readString("Enter Customer Name> ");
 		for (int i = 0; i < userCustList.size(); i++) {
 
-			if (userCustList.get(i).getName().equals(delete)) {
+			if (userCustList.get(i).getName() == delete) {
 				userCustList.remove(i);
-				System.out.println("User Account deleted");
+				System.out.println("Request Quotation removed!");
 			}
 		}
 	}
