@@ -421,8 +421,11 @@ public class C206_CaseStudyTest {
 	@Test
 	public void addCustomer() {
 		
+		// Check if the list is not null but empty boundary
 		assertNotNull("Check for valid arraylist", userCustList);
+		// Having added an item to an empty list, test if the list size is 1 -normal
 		C206_CaseStudy.addCustomer(userCustList, j1);
+		// Add an item and test if ArrayList has a size of 1
 		assertEquals("Check if arraylist size is 1" , 1, userCustList.size());
 	}
 	
@@ -430,8 +433,10 @@ public class C206_CaseStudyTest {
 	@Test
 	public void retrieveCustomer() {
 		
+		// Remove customer according to the list. Check if planned output String is the same as retrieved package list
 		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "PASSWORD", "EMAIL", "STATUS");
 		addCustomer();
+		// Check if output string is similar to the received list
 		assertEquals("checks if its retrieved properly", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
 
 	}
@@ -439,8 +444,10 @@ public class C206_CaseStudyTest {
 	@Test
 	public void viewCustomer() {
 		
+		// Given an empty list, check if the list size is 2 after adding 2 products(Normal)
 		addCustomer();
 		String output = C206_CaseStudy.retrieveAllCustomer(userCustList);
+		// Test if the predicted output String is the same as the retrieved list
 		assertEquals("Checks if view all is working properly.", output, C206_CaseStudy.retrieveAllCustomer(userCustList));
 	}
 	//Joshua
@@ -448,6 +455,7 @@ public class C206_CaseStudyTest {
 	public void deleteCustomer() {
 		
 		addCustomer();
+		// Check if the list size is 1 given an empty list after deleting 1 customer
 		C206_CaseStudy.deleteCustomer(userCustList);
 		assertEquals("Checks if deleted properly,", 0, userCustList.size());
 	}
