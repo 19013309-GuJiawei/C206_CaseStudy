@@ -144,7 +144,8 @@ public class C206_CaseStudy {
 						C206_CaseStudy.addPackage(packageList, pp);
 
 					} else if (PackageOption == 2) {
-						C206_CaseStudy.deletePackage(packageList);
+						int delete = Helper.readInt("Enter code to delete > ");
+						C206_CaseStudy.deletePackage(packageList, delete);
 
 					} else if (PackageOption == 3) {
 						C206_CaseStudy.updatePackage(packageList);
@@ -161,7 +162,8 @@ public class C206_CaseStudy {
 						C206_CaseStudy.viewAllRequestQuotation(requestquotationList);
 
 					} else if (requestquotationOption == 2) {
-						C206_CaseStudy.deleteRequestQuotation(requestquotationList);
+						int delete = Helper.readInt("Enter an code to delete > ");
+						C206_CaseStudy.deleteRequestQuotation(requestquotationList, delete);
 					}
 
 					// Manage Customer
@@ -549,13 +551,13 @@ public class C206_CaseStudy {
 	}
 
 	// DELETE PACKAGE
-	public static void deletePackage(ArrayList<Package> packageList) {
+	public static void deletePackage(ArrayList<Package> packageList, int delete) {
 
-		int code = Helper.readInt("Enter code to delete> ");
+		
 
 		for (int i = 0; i < packageList.size(); i++) {
 
-			if (packageList.get(i).getCode() == code) {
+			if (packageList.get(i).getCode() == delete) {
 				packageList.remove(i);
 				System.out.println("Package removed!");
 			}
@@ -623,13 +625,11 @@ public class C206_CaseStudy {
 	}
 
 	// DELETE REQUEST QUOTATION
-	public static void deleteRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
-
-		int code = Helper.readInt("Enter Contact of Request Quotationto delete> ");
+	public static void deleteRequestQuotation(ArrayList<RequestQuotation> requestquotationList, int delete) {
 
 		for (int i = 0; i < requestquotationList.size(); i++) {
 
-			if (requestquotationList.get(i).getContact() == code) {
+			if (requestquotationList.get(i).getContact() == delete) {
 				requestquotationList.remove(i);
 				System.out.println("Request Quotation removed!");
 			}
