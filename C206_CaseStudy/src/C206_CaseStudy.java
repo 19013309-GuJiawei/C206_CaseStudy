@@ -42,41 +42,41 @@ public class C206_CaseStudy {
 
 		// ArrayList Quotation (Alyssa)
 		ArrayList<Quotation> manageQuotationList = new ArrayList<Quotation>();
-		
+
 		// ArrayList Customer
 		ArrayList<Customer> userCustList = new ArrayList<Customer>();
 
 		// JiaWei
 		int option = 0;
-		
+
 		// JiaWei
 		while (option != OPTION_QUIT) {
-			
+
 			menu();
-		
+
 			option = Helper.readInt("Enter an option > ");
-			
+
 			if (option == 1) {
 				// View all package
 				C206_CaseStudy.viewAllPackage(packageList);
-				
+
 			} else if (option == 2) {
 				// Login as Customer
 				// Joshua
 				CustomerMenu();
-				
+
 				int CustomerOption = Helper.readInt("Enter an option > ");
-				
+
 				if (CustomerOption == 1) {
 					// Visitor account Registration
 					Customer cu = inputCustomer();
 					C206_CaseStudy.addCustomer(userCustList, cu);
-					
+
 				} else if (CustomerOption == 2) {
 					// Request for Quotation
 					RequestQuotation rq = inputRequestQuotation();
 					C206_CaseStudy.addRequestQuotation(requestquotationList, rq);
-		
+
 				} else if (CustomerOption == 3) {
 					// Manage Appointment
 					Helper.line(80, "-");
@@ -84,49 +84,49 @@ public class C206_CaseStudy {
 					System.out.println("Option 1: Add Appointment");
 					System.out.println("Option 2: remove Appointment");
 					System.out.println("Option 3: View all Appointment");
-					
+
 					int customerAppointment = Helper.readInt("Enter an option > ");
-					
+
 					if (customerAppointment == 1) {			
 						Helper.line(80, "-");
 						addAppointment();
-						
+
 					}else if (customerAppointment == 2) {			
 						Helper.line(80, "-");
 						removeAppointment();
-						
+
 					}else if (customerAppointment == 3) {
 						viewAllAppointment(appointmentList);
 					}
-					
+
 				} else {
-					
+
 					System.out.println("Invaild Option!");
 				}
 
 			} else if (option == 3) {
-				
+
 				// Login as Admin
 				AdminMenue();
-				
+
 				int AdminOption = Helper.readInt("Enter an option > ");
-				
+
 				if (AdminOption == 1) {
 					C206_CaseStudy.CustomerMenu();
 					int CustomerOption = Helper.readInt("Enter an option > ");
 					if (CustomerOption == 1) {
 						Customer cu = inputCustomer();
 						C206_CaseStudy.addCustomer(userCustList, cu);
-			
+
 					} else if (CustomerOption == 2) {
-						
+
 						// Request for Quotation
 						RequestQuotation rq = inputRequestQuotation();
 						C206_CaseStudy.addRequestQuotation(requestquotationList, rq);
-	
+
 					} else if (CustomerOption == 3) {
 						// Manage Appointment
-						
+
 					} else {
 						System.out.println("Invaild Option!");
 					}
@@ -134,32 +134,32 @@ public class C206_CaseStudy {
 					// Manage Customer
 					// Jonathan
 				} else if (AdminOption == 2) {
-					
+
 					C206_CaseStudy.packageMenu();
-					
+
 					int PackageOption = Helper.readInt("Enter an option > ");
-					
+
 					if (PackageOption == 1) {
 						Package pp = inputPackage();
 						C206_CaseStudy.addPackage(packageList, pp);
-						
+
 					} else if (PackageOption == 2) {
 						C206_CaseStudy.deletePackage(packageList);
-						
+
 					} else if (PackageOption == 3) {
 						C206_CaseStudy.updatePackage(packageList);
 					}
-					
+
 					// Manage Package
 					// Daven
 				} else if (AdminOption == 3) {
-					
+
 					C206_CaseStudy.requestquotationMenu();
 					int requestquotationOption = Helper.readInt("Enter an option > ");
 
 					if (requestquotationOption == 1) {
 						C206_CaseStudy.viewAllRequestQuotation(requestquotationList);
-						
+
 					} else if (requestquotationOption == 2) {
 						C206_CaseStudy.deleteRequestQuotation(requestquotationList);
 					}
@@ -198,7 +198,7 @@ public class C206_CaseStudy {
 				} else if (AdminOption == 5) {
 					// Manage Appointment
 					adminAppointment();
-					
+
 				} else {
 					System.out.println("Invaild Option!");
 				}
@@ -208,13 +208,13 @@ public class C206_CaseStudy {
 	}
 
 	private static void removeAppointment() {
-		
+
 		String customerName = Helper.readString("Enter Customer Name: ");
-		
+
 		for (int i = 0; i < appointmentList.size(); i++) {
 			if (customerName.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
 				removeAppointment(appointmentList, appointmentList.get(i), customerName);
-				
+
 			} else {
 				System.out.println("Customer not Found !");
 			}
@@ -222,7 +222,7 @@ public class C206_CaseStudy {
 	}
 
 	private static void addAppointment() {
-		
+
 		String customerName = Helper.readString("Enter Customer Name: ");
 		String address = Helper.readString("Enter Address: ");
 		String designerName = Helper.readString("Enter Designer Name: ");
@@ -237,7 +237,7 @@ public class C206_CaseStudy {
 
 	// JiaWei
 	public static void setHeader(String header) {
-		
+
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
@@ -245,7 +245,7 @@ public class C206_CaseStudy {
 
 	// JiaWei
 	public static void menu() {
-		
+
 		C206_CaseStudy.setHeader("Renovation ACE APP");
 		System.out.println("1. View all package");
 		System.out.println("2. Login as Customer");
@@ -257,16 +257,25 @@ public class C206_CaseStudy {
 
 	// JiaWei
 	private static void CustomerMenu() {
-		
+
 		C206_CaseStudy.setHeader("Customer Home Page");
 		System.out.println("1. Visitor account Registration");
 		System.out.println("2. Request for Quotation");
 		System.out.println("3. Manage Appointment");
 	}
 
+	// Joshua
+	private static void ManageCustomer() {
+
+		C206_CaseStudy.setHeader("MANAGE CUSTOMERS");
+		System.out.println("1. Add User Accounts");
+		System.out.println("2. View all users");
+		System.out.println("3. Delete users");
+	}
+
 	// JiaWei
 	private static void AdminMenue() {
-		
+
 		C206_CaseStudy.setHeader("Admin Home Page");
 		System.out.println("1. Manage Customer");
 		System.out.println("2. Manage Package");
@@ -276,10 +285,10 @@ public class C206_CaseStudy {
 	}
 
 	// -----------------------------------------------------Menu---------------------------------------------------//
-	
+
 	// JiaWei
 	private static void appointmentMenu() {
-		
+
 		System.out.println("1. View All Designers");
 		System.out.println("2. Make Appointment");
 		System.out.println("3. Update Appointment");
@@ -287,15 +296,15 @@ public class C206_CaseStudy {
 		System.out.println("5. View Appointment");
 
 	}
-	
+
 	// Jonathan
 	private static void packageMenu() {
-		
+
 		System.out.println("1. Add Package");
 		System.out.println("2. Remove Package");
 		System.out.println("3. Update Package");
 	}
-	
+
 	// Daven
 	private static void requestquotationMenu() {
 		System.out.println("1. View all Request Quotation");
@@ -310,51 +319,51 @@ public class C206_CaseStudy {
 		System.out.println("2. Add Quotation");
 		System.out.println("3. Delete Quotation");
 	}
-	
+
 	// --------------------------------------------Manage Appointment---------------------------------------------------//
 
 	// JiaWei
 	private static void adminAppointment() {
-		
+
 		appointmentMenu();
 		int appointmentOption = Helper.readInt("Enter an option > ");
-		
+
 		if (appointmentOption == 1) {
-			
+
 			// View All Designers
 			for (int i = 0; i < designerList.size(); i++) {
 				designerList.get(i).getName();
 			}
-			
+
 		} else if (appointmentOption == 2) {
 			addAppointment();
-			
+
 		} else if (appointmentOption == 3) {
 			// Update Appointment
 			String customerName = Helper.readString("Enter Customer Name: ");
-			
+
 			for (int i = 0; i < appointmentList.size(); i++) {
-				
+
 				if (customerName.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
-					
+
 					if (isAbleUpdate(appointmentList, appointmentList.get(i), customerName, LocalDate.now()) == true) {
 						updateMenu();
 						int adminOption = Helper.readInt("Enter Option: ");
-						
+
 						if (adminOption == 1) {
 							String address = Helper.readString("Enter New Address: ");
 							appointmentList.get(i).setAddress(address);
-							
+
 						} else if (adminOption == 2) {
 							String appointmentDate1 = Helper.readString("Enter new appointment Date (dd/mm/yyyy): ");
 							LocalDate localDate1 = LocalDate.parse(appointmentDate1, date_format);
 							appointmentList.get(i).setDateOfAppointment(localDate1);
-							
+
 						} else if (adminOption == 2) {
 							String appointmentTime1 = Helper.readString("Enter new appointment Time (hh:ss): ");
 							LocalTime localtime2 = LocalTime.parse(appointmentTime1, time_format);
 							appointmentList.get(i).setTimeOfAppointment(localtime2);
-							
+
 						} else if (adminOption == 2) {
 							String designerName1 = Helper.readString("Enter New Designer Name: ");
 							appointmentList.get(i).setDesignerName(designerName1);
@@ -362,30 +371,30 @@ public class C206_CaseStudy {
 						} else {
 							System.out.println("Invaild Option!");
 						}
-						
+
 					} else {
 						System.out.println("Unable to update!");
 					}
-					
+
 				} else {
 					System.out.println("Customer not Found !");
 				}
 			}
-			
+
 		} else if (appointmentOption == 4) {
 			removeAppointment();
-			
+
 		} else if (appointmentOption == 5) {
 			// View Appointment
 			viewAllAppointment(appointmentList);
-			
+
 		} else {
 
 		}
 	}
 
 	private static void updateMenu() {
-		
+
 		Helper.line(80, "-");
 		Helper.line(80, "-");
 		System.out.println("Option 1: Update Address");
@@ -395,20 +404,20 @@ public class C206_CaseStudy {
 	}
 
 	public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment a) {
-		
+
 		appointmentList.add(a);
 		System.out.println("Appointment added!");
 
 	}
 
 	public static void removeAppointment(ArrayList<Appointment> appointmentList, Appointment a, String name) {
-		
+
 		for (int i = 0; i < appointmentList.size(); i++) {
-			
+
 			if (name.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
 				appointmentList.remove(a);
 				System.out.println("Appointment removed!");
-				
+
 			} else {
 				System.out.println("Customer not Found!");
 			}
@@ -416,9 +425,9 @@ public class C206_CaseStudy {
 	}
 
 	public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
-		
+
 		String output = "";
-		
+
 		for (int i = 0; i < appointmentList.size(); i++) {
 
 			output += String.format("%-10s %-30s %-30s %-30s %-20s\n",
@@ -426,12 +435,12 @@ public class C206_CaseStudy {
 					appointmentList.get(i).getTimeOfAppointment().toString(), appointmentList.get(i).getDesignerName(),
 					appointmentList.get(i).getAddress(), appointmentList.get(i).getCustomer());
 		}
-		
+
 		return output;
 	}
 
 	public static void viewAllAppointment(ArrayList<Appointment> appointmentList) {
-		
+
 		Helper.line(120, "-");
 		String output = String.format("%-10s %-30s %-30s %-30s %-20s\n", "DATE", "TIME", "DESIGNER NAME", "ADDRESS",
 				"CUSTOMER NAME");
@@ -442,21 +451,21 @@ public class C206_CaseStudy {
 
 	public static boolean isAbleUpdate(ArrayList<Appointment> appointmentList, Appointment a, String name,
 			LocalDate currentDate) {
-		
+
 		for (int i = 0; i < appointmentList.size(); i++) {
-			
+
 			if (name.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
-				
+
 				if (currentDate != appointmentList.get(i).getDateOfAppointment()
 						&& currentDate.isBefore(appointmentList.get(i).getDateOfAppointment())) {
-					
+
 					System.out.println("Hi");
-					
+
 					return true;
 				}
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -465,22 +474,22 @@ public class C206_CaseStudy {
 
 	// Retrieve All Package
 	public static String retrieveAllPackage(ArrayList<Package> packageList) {
-		
+
 		String output = "";
-		
+
 		for (int i = 0; i < packageList.size(); i++) {
 
 			output += String.format("%-10d %-30s %-15s %-15s $%-15.2f \n", packageList.get(i).getCode(),
 					packageList.get(i).getDescription(), packageList.get(i).getStart_Date(),
 					packageList.get(i).getEnd_Date(), packageList.get(i).getAmount());
 		}
-		
+
 		return output;
 	}
 
 	// VIEW ALL Package
 	public static void viewAllPackage(ArrayList<Package> packageList) {
-		
+
 		C206_CaseStudy.setHeader("Package LIST");
 		String output = String.format("%-10s %-30s %-15s %-15s %-15s \n", "CODE", "DESCRIPTION", "START DATE",
 				"END DATE", "AMOUNT");
@@ -490,7 +499,7 @@ public class C206_CaseStudy {
 
 	// ADD PACKAGE
 	public static Package inputPackage() {
-		
+
 		int code = Helper.readInt("Enter code > ");
 		String description = Helper.readString("Enter description > ");
 		String start = Helper.readString("Enter Start Date> ");
@@ -512,13 +521,13 @@ public class C206_CaseStudy {
 	// UPDATE PACKAGE
 
 	public static void updatePackage(ArrayList<Package> packageList) {
-		
+
 		int code = Helper.readInt("Enter the package's code > ");
-		
+
 		for (int i = 0; i < packageList.size(); i++) {
-			
+
 			if (packageList.get(i).getCode() == code) {
-				
+
 				String description = Helper.readString("Enter new description > ");
 				String start = Helper.readString("Enter new Start Date> ");
 				String end = Helper.readString("Enter new End Date> ");
@@ -541,11 +550,11 @@ public class C206_CaseStudy {
 
 	// DELETE PACKAGE
 	public static void deletePackage(ArrayList<Package> packageList) {
-		
+
 		int code = Helper.readInt("Enter code to delete> ");
 
 		for (int i = 0; i < packageList.size(); i++) {
-			
+
 			if (packageList.get(i).getCode() == code) {
 				packageList.remove(i);
 				System.out.println("Package removed!");
@@ -558,9 +567,9 @@ public class C206_CaseStudy {
 
 	// VIEW ALL REQUEST QUOTATION
 	public static String retrieveAllRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
-		
+
 		String output = "";
-		
+
 		for (int i = 0; i < requestquotationList.size(); i++) {
 
 			output += String.format("%-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15s %-15s %-15s\n",
@@ -571,21 +580,21 @@ public class C206_CaseStudy {
 					requestquotationList.get(i).getSRequest());
 
 		}
-		
+
 		return output;
 	}
 
-	
+
 	//VIEW REQUEST QUOTATION
 	public static void viewAllRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
-		
+
 		C206_CaseStudy.setHeader("Request Quotation LIST");
-		
+
 		String output = String.format("%-15s %-10s %-10s %-20s %-10s %-15s %-15s %-15s %-15s \n", "PROPERTY TYPE",
 				"AREA SIZE", "CONTACT", "EMAIL", "BUDGET", "COMPLETE DATE", "RENO TYPE", "RENO STYLE", "URGET");
-		
+
 		output += retrieveAllRequestQuotation(requestquotationList);
-		
+
 		System.out.println(output);
 	}
 
@@ -615,11 +624,11 @@ public class C206_CaseStudy {
 
 	// DELETE REQUEST QUOTATION
 	public static void deleteRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
-		
+
 		int code = Helper.readInt("Enter Contact of Request Quotationto delete> ");
 
 		for (int i = 0; i < requestquotationList.size(); i++) {
-			
+
 			if (requestquotationList.get(i).getContact() == code) {
 				requestquotationList.remove(i);
 				System.out.println("Request Quotation removed!");
@@ -634,7 +643,7 @@ public class C206_CaseStudy {
 		String output = "";
 
 		for (int i = 0; i < manageQuotationList.size(); i++) {
-			
+
 			output += String.format("%-10d %-10d %-10s %-10s %-10s %-10s %-10.2f \n",
 					manageQuotationList.get(i).getRequestID(), manageQuotationList.get(i).getQuotationID(),
 					manageQuotationList.get(i).getRenovationCategory(), manageQuotationList.get(i).getDescription(),
@@ -685,7 +694,7 @@ public class C206_CaseStudy {
 	// ----------------------------------------Manage Customer-----------------------------------------------------------------------
 	//Joshua
 	public static Customer inputCustomer() {
-		
+
 		String uName = Helper.readString("Enter name> ");
 		String uRole = Helper.readString("Enter role> ");
 		String uEmail = Helper.readString("Enter email> ");
@@ -696,7 +705,7 @@ public class C206_CaseStudy {
 		return uCust;
 	}
 
-	
+
 	//Add Customer
 	public static void addCustomer(ArrayList<Customer> userCustList, Customer uCust) {
 
@@ -704,37 +713,37 @@ public class C206_CaseStudy {
 		System.out.println("Customer added!");
 	}
 
-	
+
 	//Retrieve Customer
 	public static String retrieveAllCustomer(ArrayList<Customer> userCustList) {
-		
+
 		String output = "";
 
 		for (int i = 0; i < userCustList.size(); i++) {
-			
+
 			output += String.format("%-10s %-20s %-10s %-10s %-20s\n", userCustList.get(i).getName(),
 					userCustList.get(i).getRole(), userCustList.get(i).getEmail(), userCustList.get(i).getPassword(),
 					userCustList.get(i).getStatus());
 		}
-		
+
 		return output;
 	}
 
 	//View Customer
 	public static void viewCustomer(ArrayList<Customer> userCustList) {
-		
+
 		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
 		output += retrieveAllCustomer(userCustList);
 		System.out.println(output);
 	}
-	
+
 	//Delete Customer
 	public static void deleteCustomer(ArrayList<Customer> userCustList) {
 
 		String delete = Helper.readString("Please enter username to delete> ");
 
 		for (int i = 0; i < userCustList.size(); i++) {
-			
+
 			if (userCustList.get(i).getName().equals(delete)) {
 				userCustList.remove(i);
 				System.out.println("User Account deleted");
