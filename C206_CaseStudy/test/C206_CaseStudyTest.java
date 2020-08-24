@@ -157,7 +157,7 @@ public class C206_CaseStudyTest {
 		// Item list is not null, so that can update an appointment
 		assertNotNull("Test if there is valid Appointment arraylist to update", appointmentList);
 
-		// Check that if customer can update his/her appointment
+		// If customer name and appointment ID were inputted correctly, appointment should be able to update
 		LocalDate currentDate = LocalDate.now();
 		C206_CaseStudy.addAppointment(appointmentList, a1);
 		boolean isAble = C206_CaseStudy.isAbleUpdate(appointmentList, a1,"Customer1",currentDate);
@@ -176,7 +176,7 @@ public class C206_CaseStudyTest {
 		assertEquals(false, isAbleWithExpired);
 		C206_CaseStudy.removeAppointment(appointmentList, a3,"Customer3", "A3");
 
-		// The customer is not able to change with the worng customer name entered
+		// If the customer name were inputted wrongly, appointment is not able to update. 
 		C206_CaseStudy.addAppointment(appointmentList, a1);
 		boolean wrongName = C206_CaseStudy.isAbleUpdate(appointmentList, a1,"Customer2",currentDate);
 		assertEquals(false, wrongName);
