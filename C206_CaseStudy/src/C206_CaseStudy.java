@@ -132,7 +132,12 @@ public class C206_CaseStudy {
 					}
 
 					// Manage Customer
+					
+					
+					
+					
 					// Jonathan
+					// Manage Package
 				} else if (AdminOption == 2) {
 
 					C206_CaseStudy.packageMenu();
@@ -151,8 +156,14 @@ public class C206_CaseStudy {
 						C206_CaseStudy.updatePackage(packageList);
 					}
 
-					// Manage Package
+					
+					
+					
+					
+					
+					
 					// Daven
+					// Manage request quotation
 				} else if (AdminOption == 3) {
 
 					C206_CaseStudy.requestquotationMenu();
@@ -329,8 +340,7 @@ public class C206_CaseStudy {
 		System.out.println("3. Delete Quotation");
 	}
 
-	// --------------------------------------------Manage
-	// Appointment---------------------------------------------------//
+	// --------------------------------------------Manage Appointment---------------------------------------------------//
 
 	// JiaWei
 	private static void adminAppointment() {
@@ -535,8 +545,7 @@ public class C206_CaseStudy {
 		return false;
 	}
 
-	// ------------------------------------------------Manage
-	// Package---------------------------------------------------//
+	// ------------------------------------------------Manage Package---------------------------------------------------//
 	// Jonathan
 
 	// Retrieve All Package
@@ -627,8 +636,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ----------------------------------------Manage Request
-	// Quotation---------------------------------------------------//
+	// ----------------------------------------Manage Request Quotation---------------------------------------------------//
 	// DAVEN
 
 	// VIEW ALL REQUEST QUOTATION
@@ -699,8 +707,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// -----------------------------------------------Manage
-	// Quotation---------------------------------------------------//
+	// -----------------------------------------------Manage Quotation---------------------------------------------------//
 	// Alyssa
 	// Retrieve Quotations
 	public static String retreiveAllQuotation(ArrayList<Quotation> manageQuotationList) {
@@ -756,8 +763,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ----------------------------------------Manage
-	// Customer-----------------------------------------------------------------------
+	// ----------------------------------------Manage Customer-----------------------------------------------------------------------
 	// Joshua
 	public static Customer inputCustomer() {
 
