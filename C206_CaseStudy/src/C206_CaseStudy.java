@@ -5,6 +5,16 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
+	//jiawei
+	private static final int searchByAppointmentDate = 3;
+	private static final int searchByDesignerName = 2;
+	private static final int searchByCustomerName = 1;
+	private static final int SearchAppointment = 6;
+	private static final int viewAllAppointment = 5;
+	private static final int removeAppointment = 4;
+	private static final int updateAppointment = 3;
+	private static final int ViewAllDesigners = 1;
+	private static final int addAppointment = 2;
 	// JiaWei
 	private static final int OPTION_QUIT = 4;
 	private static final DateTimeFormatter format = DateTimeFormatter.ofPattern("d/MM/yyy");
@@ -348,17 +358,17 @@ public class C206_CaseStudy {
 		appointmentMenu();
 		int appointmentOption = Helper.readInt("Enter an option > ");
 
-		if (appointmentOption == 1) {
+		if (appointmentOption == ViewAllDesigners) {
 
 			// View All Designers
 			for (int i = 0; i < designerList.size(); i++) {
-				designerList.get(i).getName();
+				System.out.println(designerList.get(i).getName());
 			}
 
-		} else if (appointmentOption == 2) {
+		} else if (appointmentOption == addAppointment) {
 			addAppointment();
 
-		} else if (appointmentOption == 3) {
+		} else if (appointmentOption == updateAppointment) {
 			// Update Appointment
 			String customerName = Helper.readString("Enter Customer Name: ");
 
@@ -399,14 +409,14 @@ public class C206_CaseStudy {
 				}
 			}
 
-		} else if (appointmentOption == 4) {
+		} else if (appointmentOption == removeAppointment) {
 			removeAppointment();
 
-		} else if (appointmentOption == 5) {
+		} else if (appointmentOption == viewAllAppointment) {
 			// View Appointment
 			viewAllAppointment(appointmentList);
 
-		} else if (appointmentOption == 6) {
+		} else if (appointmentOption == SearchAppointment) {
 			searchAppointmentBy();
 
 		} else {
@@ -436,20 +446,20 @@ public class C206_CaseStudy {
 	public static String searchAppointment(ArrayList<Appointment> appointmentList, int option, String searchBy) {
 		String output = String.format("%-10s %-10s %-30s %-30s %-30s %-20s\n", "ID", "DATE", "TIME", "DESIGNER NAME",
 				"ADDRESS", "CUSTOMER NAME");
-		if (option == 1) {
+		if (option == searchByCustomerName) {
 			for (int i = 0; i < appointmentList.size(); i++) {
 				if (searchBy.equalsIgnoreCase(appointmentList.get(i).getCustomer())) {
 					output = outputFormat(appointmentList, output, i);
 				}
 			}
-		} else if (option == 2) {
+		} else if (option == searchByDesignerName) {
 			for (int i = 0; i < appointmentList.size(); i++) {
 				if (searchBy.equalsIgnoreCase(appointmentList.get(i).getDesignerName())) {
 					output = outputFormat(appointmentList, output, i);
 					
 				}
 			}
-		} else if (option == 3) {
+		} else if (option == searchByAppointmentDate) {
 			LocalDate localDate = LocalDate.parse(searchBy, date_format);
 			for (int i = 0; i < appointmentList.size(); i++) {
 				if (localDate.isEqual(appointmentList.get(i).getDateOfAppointment())) {
