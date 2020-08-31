@@ -126,6 +126,7 @@ public class C206_CaseStudy {
 					int CustomerOption = Helper.readInt("Enter an option > ");
 					if (CustomerOption == 1) {
 						// Manage Customer
+						//Joshua
 						C206_CaseStudy.ManageCustomer();
 						int userCustOption = Helper.readInt("Enter an option > ");
 						if (userCustOption == 1) {
