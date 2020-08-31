@@ -125,9 +125,21 @@ public class C206_CaseStudy {
 					C206_CaseStudy.CustomerMenu();
 					int CustomerOption = Helper.readInt("Enter an option > ");
 					if (CustomerOption == 1) {
-						Customer cu = inputCustomer();
-						C206_CaseStudy.addCustomer(userCustList, cu);
-
+						// Manage Customer
+						C206_CaseStudy.ManageCustomer();
+						int userCustOption = Helper.readInt("Enter an option > ");
+						if (userCustOption == 1) {
+							Customer cu = inputCustomer();
+							C206_CaseStudy.addCustomer(userCustList, cu);
+						}
+						else if(userCustOption == 2) {
+							C206_CaseStudy.viewCustomer(userCustList);
+						}
+						else if(userCustOption == 3) {
+							String delete = Helper.readString("Enter Name To Delete: ");
+							C206_CaseStudy.deleteCustomer(userCustList, delete);
+						}
+						
 					} else if (CustomerOption == 2) {
 
 						// Request for Quotation
@@ -141,7 +153,7 @@ public class C206_CaseStudy {
 						System.out.println("Invaild Option!");
 					}
 
-					// Manage Customer
+					
 					
 					
 					
