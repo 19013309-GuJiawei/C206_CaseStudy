@@ -15,8 +15,9 @@ public class RequestQuotation {
 	private String SRequest;
 	
 
-	public RequestQuotation(String PropertyType, double AreaSize,int Contact,String email,double budget,
+	public RequestQuotation(int RQcode, String PropertyType, double AreaSize,int Contact,String email,double budget,
 			LocalDate completedate,String rT,String renoStyle,String SRequest){
+		this.RQcode = RQcode;
 		this.PropertyType = PropertyType;
 		this.AreaSize = AreaSize;
 		this.Contact = Contact;
@@ -28,6 +29,16 @@ public class RequestQuotation {
 		this.SRequest = SRequest;
 		
 	}
+	
+	public int getRQcode() {
+		return RQcode;
+	}
+
+	public void setRQcode(int code) {
+		RQcode = code;
+	}
+	
+	
 
 	public String getPropertyType() {
 		return PropertyType;
@@ -100,6 +111,7 @@ public class RequestQuotation {
 	public void setSRequest(String sRequest) {
 		SRequest = sRequest;
 	}
+
 	
 	
 }

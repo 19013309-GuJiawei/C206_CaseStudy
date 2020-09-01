@@ -48,7 +48,7 @@ public class C206_CaseStudy {
 		// ArrayList RequestQuotation and Add
 		ArrayList<RequestQuotation> requestquotationList = new ArrayList<RequestQuotation>();
 		requestquotationList.add(
-				new RequestQuotation("HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none"));
+				new RequestQuotation(1, "HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none"));
 
 		// ArrayList Quotation (Alyssa)
 		ArrayList<Quotation> manageQuotationList = new ArrayList<Quotation>();
@@ -669,7 +669,8 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < requestquotationList.size(); i++) {
 
-			output += String.format("%-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15s %-15s %-15s\n",
+			output += String.format("%-10d %-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15s %-15s %-15s\n",
+					requestquotationList.get(i).getRQcode(),
 					requestquotationList.get(i).getPropertyType(), requestquotationList.get(i).getAreaSize(),
 					requestquotationList.get(i).getContact(), requestquotationList.get(i).getEmail(),
 					requestquotationList.get(i).getBudget(), requestquotationList.get(i).getCompletedate(),
@@ -686,7 +687,7 @@ public class C206_CaseStudy {
 
 		C206_CaseStudy.setHeader("Request Quotation LIST");
 
-		String output = String.format("%-15s %-10s %-10s %-20s %-10s %-15s %-15s %-15s %-15s \n", "PROPERTY TYPE",
+		String output = String.format("%-10s %-15s %-10s %-10s %-20s %-10s %-15s %-15s %-15s %-15s \n", "RQCODE", "PROPERTY TYPE",
 				"AREA SIZE", "CONTACT", "EMAIL", "BUDGET", "COMPLETE DATE", "RENO TYPE", "RENO STYLE", "URGET");
 
 		output += retrieveAllRequestQuotation(requestquotationList);
@@ -696,7 +697,8 @@ public class C206_CaseStudy {
 
 	// ADD REQUEST QUOTATION
 	public static RequestQuotation inputRequestQuotation() {
-
+		
+		int RQcode = Helper.readInt("Enter RQcode> ");
 		String PT = Helper.readString("Enter Property Type > ");
 		double Areasize = Helper.readDouble("Enter Areasize > ");
 		int Contact = Helper.readInt("Enter Contact> ");
@@ -708,7 +710,7 @@ public class C206_CaseStudy {
 		String RS = Helper.readString("Enter Renovation Style > ");
 		String urgent = Helper.readString("Is it urgent > ");
 
-		RequestQuotation rq = new RequestQuotation(PT, Areasize, Contact, Email, Budget, completeDate, RT, RS, urgent);
+		RequestQuotation rq = new RequestQuotation(RQcode, PT, Areasize, Contact, Email, Budget, completeDate, RT, RS, urgent);
 		return rq;
 	}
 
@@ -731,6 +733,45 @@ public class C206_CaseStudy {
 		    }
 		}
 	}
+	
+	public static void updateRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
+
+		int code = Helper.readInt("Enter the Request Quotation's code > ");
+
+		for (int i = 0; i < requestquotationList.size(); i++) {
+
+			if (requestquotationList.get(i).getRQcode() == code) {
+
+				String PropertyType = Helper.readString("Enter new Property Type > ");
+				double AreaSize = Helper.readDouble("Enter new Area Size> ");
+				int Contact = Helper.readInt("Enter new Contact> ");
+				String email = Helper.readString("Enter new email > ");
+				double budget = Helper.readDouble("Enter new budget > ");
+				String completedate = Helper.readString("Enter new complete date > ");
+				LocalDate date = LocalDate.parse(completedate, format);
+				String rT = Helper.readString("Enter new renovation type > ");
+				String renoStyle = Helper.readString("Enter renovation style > ");
+				String SRequest = Helper.readString("Is it urget? > ");
+				
+
+				requestquotationList.get(i).setPropertyType(PropertyType);
+				requestquotationList.get(i).setAreaSize(AreaSize);
+				requestquotationList.get(i).setContact(Contact);
+				requestquotationList.get(i).setEmail(email);
+				requestquotationList.get(i).setBudget(budget);
+				requestquotationList.get(i).setCompletedate(date);
+				requestquotationList.get(i).setRenovationType(rT);
+				requestquotationList.get(i).setRenoStyle(renoStyle);
+				requestquotationList.get(i).setSRequest(SRequest);
+
+				System.out.println("Request Quotation updated");
+
+			} else {
+				System.out.println("Code not found!");
+			}
+		}
+	}
+	
 
 	// -----------------------------------------------Manage Quotation---------------------------------------------------//
 	// Alyssa
