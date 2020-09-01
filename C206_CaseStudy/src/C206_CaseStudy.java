@@ -198,6 +198,9 @@ public class C206_CaseStudy {
 					} else if (requestquotationOption == 2) {
 						int delete = Helper.readInt("Enter an code to delete > ");
 						C206_CaseStudy.deleteRequestQuotation(requestquotationList, delete);
+						
+					} else if (requestquotationOption == 3) {
+						C206_CaseStudy.updateRequestQuotation(requestquotationList);
 					}
 
 					// Manage Customer
@@ -352,6 +355,7 @@ public class C206_CaseStudy {
 	private static void requestquotationMenu() {
 		System.out.println("1. View all Request Quotation");
 		System.out.println("2. Remove Request Quotation");
+		System.out.println("3. Update Request Quotation");
 
 	}
 
@@ -733,6 +737,8 @@ public class C206_CaseStudy {
 		    }
 		}
 	}
+	
+	// UPDATE  REQUEST QUOTATION
 	
 	public static void updateRequestQuotation(ArrayList<RequestQuotation> requestquotationList) {
 

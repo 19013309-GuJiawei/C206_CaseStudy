@@ -55,8 +55,8 @@ public class C206_CaseStudyTest {
 
 		j1 = new Customer("NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
 
-		rq1 = new RequestQuotation(1,"HDB", 100, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" );
-		rq2 = new RequestQuotation(2,"HDB", 200, 888, "456@gmail.com", 200.1, null, "Living room", "old", "none" );
+		rq1 = new RequestQuotation(1,"HDB", 100.00, 999, "123@gmail.com", 100.1, null, "Whole house", "modern", "none" );
+		rq2 = new RequestQuotation(2,"HDB", 200.00, 888, "456@gmail.com", 200.1, null, "Living room", "old", "none" );
 
 		// jiawei
 		LocalDate localDate1 = LocalDate.parse("20/08/2021", date_format);
@@ -404,6 +404,28 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that Request Quotation arraylist size is 1", 1, requestquotationList.size());
 
 	}
+	
+	//Daven
+		@Test
+	public void updateRequestQuotationTest() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Request Quotation arraylist to retrieve item", requestquotationList);
+
+		//Given an empty list, after adding 1 items, test if the size of the list is 1 - normal
+		C206_CaseStudy.addRequestQuotation(requestquotationList, rq1);
+
+
+		// Update one of the package's information
+		requestquotationList.get(0).setBudget(300.00);
+
+		//Test if the expected output string is the updated list of package in the SourceCentre
+		String allRequestQuotation= C206_CaseStudy.retrieveAllRequestQuotation(requestquotationList);
+		String testOutput = String.format("%-10d %-15s %-10.2f %-10d %-20s %-10.2f %-15s %-15s %-15s %-15s\n",1,"HDB", 100.00, 999, "123@gmail.com", 300.00, null, "Whole house", "modern", "none" );
+
+		assertEquals("Test that updateRequestQuotation", testOutput, allRequestQuotation);
+	}
+	
+	
 
 	//Alyssa
 	@Test
