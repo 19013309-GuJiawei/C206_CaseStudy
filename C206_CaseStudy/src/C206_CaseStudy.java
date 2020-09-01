@@ -726,7 +726,9 @@ public class C206_CaseStudy {
 			if (requestquotationList.get(i).getContact() == delete) {
 				requestquotationList.remove(i);
 				System.out.println("Request Quotation removed!");
-			}
+			}else{
+				System.out.println("Deletion failed");
+		    }
 		}
 	}
 
